@@ -33,7 +33,7 @@ public class Main {
 
     //    -------------   Main method start   -------------
     public static void main(String[] args) {
-        HomeView();                             //Goes to line number :- 38
+        HomeView();
     }
 
     //    -------------   Main method end   -------------
@@ -48,14 +48,14 @@ public class Main {
         while(true) {
             String customerOption = input.nextLine();
             if (customerOption.equals("1")) {
-                MainMenuView();                 //Goes to line number :- 67
+                MainMenuView();
             } else if (customerOption.equals("2")) {
-                MakeOrderScreen();              //Goes to line number :- 143
+                MakeOrderScreen();
             } else if (customerOption.equals("x")) {
                 System.out.println("\nThank you for visiting Pizza Hut, See you next time.\n");
                 System.exit(0);
             } else {
-                InvalidPart();                  //Goes to line number :- 61
+                InvalidPart();
             }
         }
     }
@@ -79,15 +79,15 @@ public class Main {
 
             String customerOption1 = input.nextLine();
             if (customerOption1.equals("1")) {
-                AddItem1();                     //Goes to line number :- 95
+                AddItem1();
             } else if (customerOption1.equals("2")) {
-                AddItem2();                     //Goes to line number :- 107
+                AddItem2();
             } else if (customerOption1.equals("3")) {
-                AddItem3();                     //Goes to line number :- 119
+                AddItem3();
             } else if (customerOption1.equals("4")) {
-                AddItem4();                     //Goes to line number :- 131
+                AddItem4();
             } else if (customerOption1.equals("0")) {
-                HomeView();                     //Goes to line number :- 38
+                HomeView();
             } else {
                 System.out.print("\nPlease enter a valid input");
             }
@@ -103,7 +103,7 @@ public class Main {
 
         String customerOption2 = input.nextLine();
         if (customerOption2.equalsIgnoreCase("")){
-            MainMenuView();                     //Goes to line number :- 67
+            MainMenuView();
         }
     }
 
@@ -115,7 +115,7 @@ public class Main {
 
         String customerOption2 = input.nextLine();
         if (customerOption2.equalsIgnoreCase("")){
-            MainMenuView();                     //Goes to line number :- 67
+            MainMenuView();
         }
     }
 
@@ -127,7 +127,7 @@ public class Main {
 
         String customerOption2 = input.nextLine();
         if (customerOption2.equalsIgnoreCase("")){
-            MainMenuView();                     //Goes to line number :- 67
+            MainMenuView();
         }
     }
 
@@ -139,7 +139,7 @@ public class Main {
 
         String customerOption2 = input.nextLine();
         if (customerOption2.equalsIgnoreCase("")){
-            MainMenuView();                     //Goes to line number :- 67
+            MainMenuView();
         }
     }
 
@@ -164,7 +164,7 @@ public class Main {
             } else if (customerOption2.equals("4")) {
                 Choice4();
             } else if (customerOption2.equals("0")) {
-                MainMenuView();                 //Goes to line number :- 67
+                MainMenuView();
             }
         }
     }
@@ -194,7 +194,7 @@ public class Main {
                 ReceiptView();
                 System.exit(0);
             } else if (customerOption2.equals("0")) {
-                MainMenuView();                 //Goes to line number :- 67
+                MainMenuView();
             }
         }
     }
@@ -213,14 +213,14 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("3")) {
-                Choice1_2_3();                  //Goes to line number :-
+                Choice1_2_3();
             } else if (customerOption2.equals("4")) {
-                Choice1_2_4();                  //Goes to line number :-
+                Choice1_2_4();
             } else if (customerOption2.equals("E")) {
-                ReceiptView();                  //Goes to line number :-
+                ReceiptView();
                 System.exit(0);
             } else if (customerOption2.equals("0")) {
-                MainMenuView();                 //Goes to line number :- 67
+                MainMenuView();
             }
         }
     }
@@ -228,14 +228,14 @@ public class Main {
     private static void Choice1_2_3() {
         itemCount += 1;
         total += price3;
-        ReceiptView();                          //Goes to line number :-
+        ReceiptView();
         System.exit(0);
     }
 
     private static void Choice1_2_4() {
         itemCount += 1;
         total += price4;
-        ReceiptView();                          //Goes to line number :-
+        ReceiptView();
         System.exit(0);
     }
 
@@ -268,14 +268,14 @@ public class Main {
     private static void Choice1_3_2() {
         itemCount += 1;
         total += price2;
-        ReceiptView();                          //Goes to line number :-
+        ReceiptView();
         System.exit(0);
     }
 
     private static void Choice1_3_4() {
         itemCount += 1;
         total += price4;
-        ReceiptView();                          //Goes to line number :-
+        ReceiptView();
         System.exit(0);
     }
 
@@ -293,14 +293,14 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("2")) {
-                Choice1_4_2();                  //Goes to line number :-
+                Choice1_4_2();
             } else if (customerOption2.equals("3")) {
-                Choice1_4_3();                  //Goes to line number :-
+                Choice1_4_3();
             } else if (customerOption2.equals("E")) {
-                ReceiptView();                  //Goes to line number :-
+                ReceiptView();
                 System.exit(0);
             } else if (customerOption2.equals("0")) {
-                MainMenuView();                 //Goes to line number :-
+                MainMenuView();
             }
         }
     }
@@ -308,14 +308,14 @@ public class Main {
     private static void Choice1_4_2() {
         itemCount += 1;
         total += price2;
-        ReceiptView();                          //Goes to line number :-
+        ReceiptView();
         System.exit(0);
     }
 
     private static void Choice1_4_3() {
         itemCount += 1;
         total += price3;
-        ReceiptView();                          //Goes to line number :-
+        ReceiptView();
         System.exit(0);
     }
     //    --------------------------   Choice - 1  end --------------------------
