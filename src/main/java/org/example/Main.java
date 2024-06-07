@@ -3,6 +3,7 @@ package org.example;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.Stack;
 
@@ -15,6 +16,8 @@ public class Main {
     static int itemCount = 0;
     static double total;
     static String currencyCode = "LKR";
+    static String[] items = {"", "", "", ""};
+    static String[] prices = {"", "", "", ""};
 
     static String item1 = "BBQ Chicken Pizza";
     static String item2 = "Devil Chicken Pizza";
@@ -35,7 +38,6 @@ public class Main {
     public static void main(String[] args) {
         HomeView();
     }
-
     //    -------------   Main method end   -------------
 
     //    -------------   HomeView method start   -------------
@@ -156,12 +158,20 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")){
+                items[0] = item1;
+                prices[0] = String.valueOf(price1);
                 Choice1();
             } else if (customerOption2.equals("2")) {
+                items[0] = item2;
+                prices[0] = String.valueOf(price2);
                 Choice2();
             } else if (customerOption2.equals("3")) {
+                items[0] = item3;
+                prices[0] = String.valueOf(price3);
                 Choice3();
             } else if (customerOption2.equals("4")) {
+                items[0] = item4;
+                prices[0] = String.valueOf(price4);
                 Choice4();
             } else if (customerOption2.equals("0")) {
                 MainMenuView();
@@ -185,10 +195,16 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("2")) {
+                items[1] = item2;
+                prices[1] = String.valueOf(price2);
                 Choice1_2();
             } else if (customerOption2.equals("3")) {
+                items[1] = item3;
+                prices[1] = String.valueOf(price3);
                 Choice1_3();
             } else if (customerOption2.equals("4")) {
+                items[1] = item4;
+                prices[1] = String.valueOf(price4);
                 Choice1_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -213,8 +229,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("3")) {
+                items[2] = item3;
+                prices[2] = String.valueOf(price3);
                 Choice1_2_3();
             } else if (customerOption2.equals("4")) {
+                items[2] = item4;
+                prices[2] = String.valueOf(price4);
                 Choice1_2_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -228,6 +248,8 @@ public class Main {
     private static void Choice1_2_3() {
         itemCount += 1;
         total += price3;
+        items[3] = item3;
+        prices[3] = String.valueOf(price3);
         ReceiptView();
         System.exit(0);
     }
@@ -235,6 +257,8 @@ public class Main {
     private static void Choice1_2_4() {
         itemCount += 1;
         total += price4;
+        items[3] = item4;
+        prices[3] = String.valueOf(price4);
         ReceiptView();
         System.exit(0);
     }
@@ -253,8 +277,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("2")) {
+                items[2] = item2;
+                prices[2] = String.valueOf(price2);
                 Choice1_3_2();
             } else if (customerOption2.equals("4")) {
+                items[2] = item4;
+                prices[2] = String.valueOf(price4);
                 Choice1_3_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -268,6 +296,8 @@ public class Main {
     private static void Choice1_3_2() {
         itemCount += 1;
         total += price2;
+        items[3] = item2;
+        prices[3] = String.valueOf(price2);
         ReceiptView();
         System.exit(0);
     }
@@ -275,6 +305,8 @@ public class Main {
     private static void Choice1_3_4() {
         itemCount += 1;
         total += price4;
+        items[3] = item4;
+        prices[3] = String.valueOf(price4);
         ReceiptView();
         System.exit(0);
     }
@@ -293,8 +325,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("2")) {
+                items[2] = item2;
+                prices[2] = String.valueOf(price2);
                 Choice1_4_2();
             } else if (customerOption2.equals("3")) {
+                items[2] = item3;
+                prices[2] = String.valueOf(price3);
                 Choice1_4_3();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -308,6 +344,8 @@ public class Main {
     private static void Choice1_4_2() {
         itemCount += 1;
         total += price2;
+        items[3] = item2;
+        prices[3] = String.valueOf(price2);
         ReceiptView();
         System.exit(0);
     }
@@ -315,6 +353,8 @@ public class Main {
     private static void Choice1_4_3() {
         itemCount += 1;
         total += price3;
+        items[3] = item3;
+        prices[3] = String.valueOf(price3);
         ReceiptView();
         System.exit(0);
     }
@@ -335,10 +375,16 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[1] = item1;
+                prices[1] = String.valueOf(price1);
                 Choice2_1();
             } else if (customerOption2.equals("3")) {
+                items[1] = item3;
+                prices[1] = String.valueOf(price3);
                 Choice2_3();
             } else if (customerOption2.equals("4")) {
+                items[1] = item4;
+                prices[1] = String.valueOf(price4);
                 Choice2_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -363,8 +409,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("3")) {
+                items[2] = item3;
+                prices[2] = String.valueOf(price3);
                 Choice2_1_3();
             } else if (customerOption2.equals("4")) {
+                items[2] = item4;
+                prices[2] = String.valueOf(price4);
                 Choice2_1_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -378,6 +428,8 @@ public class Main {
     private static void Choice2_1_3() {
         itemCount += 1;
         total += price3;
+        items[3] = item3;
+        prices[3] = String.valueOf(price3);
         ReceiptView();
         System.exit(0);
     }
@@ -385,6 +437,8 @@ public class Main {
     private static void Choice2_1_4() {
         itemCount += 1;
         total += price4;
+        items[3] = item4;
+        prices[3] = String.valueOf(price4);
         ReceiptView();
         System.exit(0);
     }
@@ -403,8 +457,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[2] = item1;
+                prices[2] = String.valueOf(price1);
                 Choice2_3_1();
             } else if (customerOption2.equals("4")) {
+                items[2] = item4;
+                prices[2] = String.valueOf(price4);
                 Choice2_3_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -418,6 +476,8 @@ public class Main {
     private static void Choice2_3_1() {
         itemCount += 1;
         total += price1;
+        items[3] = item1;
+        prices[3] = String.valueOf(price1);
         ReceiptView();
         System.exit(0);
     }
@@ -425,6 +485,8 @@ public class Main {
     private static void Choice2_3_4() {
         itemCount += 1;
         total += price4;
+        items[3] = item4;
+        prices[3] = String.valueOf(price4);
         ReceiptView();
         System.exit(0);
     }
@@ -443,8 +505,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[2] = item1;
+                prices[2] = String.valueOf(price1);
                 Choice2_4_1();
             } else if (customerOption2.equals("3")) {
+                items[2] = item3;
+                prices[2] = String.valueOf(price3);
                 Choice2_4_3();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -458,6 +524,8 @@ public class Main {
     private static void Choice2_4_1() {
         itemCount += 1;
         total += price1;
+        items[3] = item1;
+        prices[3] = String.valueOf(price1);
         ReceiptView();
         System.exit(0);
     }
@@ -465,6 +533,8 @@ public class Main {
     private static void Choice2_4_3() {
         itemCount += 1;
         total += price3;
+        items[3] = item3;
+        prices[3] = String.valueOf(price1);
         ReceiptView();
         System.exit(0);
     }
@@ -485,10 +555,16 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[1] = item1;
+                prices[1] = String.valueOf(price1);
                 Choice3_1();
             } else if (customerOption2.equals("2")) {
+                items[1] = item2;
+                prices[1] = String.valueOf(price2);
                 Choice3_2();
             } else if (customerOption2.equals("4")) {
+                items[1] = item4;
+                prices[1] = String.valueOf(price4);
                 Choice3_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -513,8 +589,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("2")) {
+                items[2] = item2;
+                prices[2] = String.valueOf(price2);
                 Choice3_1_2();
             } else if (customerOption2.equals("4")) {
+                items[2] = item4;
+                prices[2] = String.valueOf(price4);
                 Choice3_1_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -528,6 +608,8 @@ public class Main {
     private static void Choice3_1_2() {
         itemCount += 1;
         total += price2;
+        items[3] = item2;
+        prices[3] = String.valueOf(price2);
         ReceiptView();
         System.exit(0);
     }
@@ -535,6 +617,8 @@ public class Main {
     private static void Choice3_1_4() {
         itemCount += 1;
         total += price4;
+        items[3] = item4;
+        prices[3] = String.valueOf(price4);
         ReceiptView();
         System.exit(0);
     }
@@ -553,8 +637,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[2] = item1;
+                prices[2] = String.valueOf(price1);
                 Choice3_2_1();
             } else if (customerOption2.equals("4")) {
+                items[2] = item4;
+                prices[2] = String.valueOf(price4);
                 Choice3_2_4();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -568,6 +656,8 @@ public class Main {
     private static void Choice3_2_1() {
         itemCount += 1;
         total += price1;
+        items[3] = item1;
+        prices[3] = String.valueOf(price1);
         ReceiptView();
         System.exit(0);
     }
@@ -575,6 +665,8 @@ public class Main {
     private static void Choice3_2_4() {
         itemCount += 1;
         total += price4;
+        items[3] = item4;
+        prices[3] = String.valueOf(price4);
         ReceiptView();
         System.exit(0);
     }
@@ -593,8 +685,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[2] = item1;
+                prices[2] = String.valueOf(price1);
                 Choice3_4_1();
             } else if (customerOption2.equals("2")) {
+                items[2] = item2;
+                prices[2] = String.valueOf(price2);
                 Choice3_4_2();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -608,6 +704,8 @@ public class Main {
     private static void Choice3_4_1() {
         itemCount += 1;
         total += price1;
+        items[3] = item1;
+        prices[3] = String.valueOf(price1);
         ReceiptView();
         System.exit(0);
     }
@@ -615,6 +713,8 @@ public class Main {
     private static void Choice3_4_2() {
         itemCount += 1;
         total += price2;
+        items[3] = item2;
+        prices[3] = String.valueOf(price2);
         ReceiptView();
         System.exit(0);
     }
@@ -635,10 +735,16 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[1] = item1;
+                prices[1] = String.valueOf(price1);
                 Choice4_1();
             } else if (customerOption2.equals("2")) {
+                items[1] = item2;
+                prices[1] = String.valueOf(price2);
                 Choice4_2();
             } else if (customerOption2.equals("3")) {
+                items[1] = item3;
+                prices[1] = String.valueOf(price3);
                 Choice4_3();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -663,8 +769,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("2")) {
+                items[2] = item2;
+                prices[2] = String.valueOf(price2);
                 Choice4_1_2();
             } else if (customerOption2.equals("3")) {
+                items[2] = item3;
+                prices[2] = String.valueOf(price3);
                 Choice4_1_3();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -678,6 +788,8 @@ public class Main {
     private static void Choice4_1_2() {
         itemCount += 1;
         total += price2;
+        items[3] = item2;
+        prices[3] = String.valueOf(price2);
         ReceiptView();
         System.exit(0);
     }
@@ -685,6 +797,8 @@ public class Main {
     private static void Choice4_1_3() {
         itemCount += 1;
         total += price3;
+        items[3] = item3;
+        prices[3] = String.valueOf(price3);
         ReceiptView();
         System.exit(0);
     }
@@ -703,8 +817,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[2] = item1;
+                prices[2] = String.valueOf(price1);
                 Choice4_2_1();
             } else if (customerOption2.equals("3")) {
+                items[2] = item3;
+                prices[2] = String.valueOf(price3);
                 Choice4_2_3();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -718,6 +836,8 @@ public class Main {
     private static void Choice4_2_1() {
         itemCount += 1;
         total += price1;
+        items[3] = item1;
+        prices[3] = String.valueOf(price1);
         ReceiptView();
         System.exit(0);
     }
@@ -725,6 +845,8 @@ public class Main {
     private static void Choice4_2_3() {
         itemCount += 1;
         total += price3;
+        items[3] = item3;
+        prices[3] = String.valueOf(price3);
         ReceiptView();
         System.exit(0);
     }
@@ -743,8 +865,12 @@ public class Main {
 
             String customerOption2 = input.nextLine();
             if (customerOption2.equals("1")) {
+                items[2] = item1;
+                prices[2] = String.valueOf(price1);
                 Choice4_3_1();
             } else if (customerOption2.equals("2")) {
+                items[2] = item2;
+                prices[2] = String.valueOf(price2);
                 Choice4_3_2();
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
@@ -758,6 +884,8 @@ public class Main {
     private static void Choice4_3_1() {
         itemCount += 1;
         total += price1;
+        items[3] = item1;
+        prices[3] = String.valueOf(price1);
         ReceiptView();
         System.exit(0);
     }
@@ -765,6 +893,8 @@ public class Main {
     private static void Choice4_3_2() {
         itemCount += 1;
         total += price2;
+        items[3] = item2;
+        prices[3] = String.valueOf(price2);
         ReceiptView();
         System.exit(0);
     }
@@ -775,8 +905,9 @@ public class Main {
         System.out.println("\nYou have ordered #" + itemCount + " number of items");
         System.out.println("            Pizza Hut");
         System.out.println("-------------------------------------");
-        System.out.println();
-        System.out.println();
+        for (int i = 0; i < 3; i++) {
+            System.out.println("#" + (i+1) + " " + items[i] + " - " + prices[i] + " " + currencyCode);
+        }
         System.out.println("\n        Total : " + total + " " + currencyCode);
         System.out.println("-------------------------------------");
         System.out.println("     Thank You For Ordering");
