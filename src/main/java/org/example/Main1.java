@@ -216,7 +216,12 @@ public class Main1 {
             System.out.println("Press [E] to complete\nOR\nPress [0] to go back to Main menu\n");
 
             String customerOption2 = input.nextLine();
-            if (customerOption2.equals("2")) {
+            if (customerOption2.equals("1")) {
+                itemCount += 1;
+                total += price1;
+                items[i] = item1;
+                prices[i] = String.valueOf(price1);
+            } else if (customerOption2.equals("2")) {
                 itemCount += 1;
                 total += price2;
                 items[i] = item2;
@@ -258,6 +263,11 @@ public class Main1 {
                 total += price1;
                 items[i] = item1;
                 prices[i] = String.valueOf(price1);
+            } else if (customerOption2.equals("2")) {
+                itemCount += 1;
+                total += price2;
+                items[i] = item2;
+                prices[i] = String.valueOf(price2);
             } else if (customerOption2.equals("3")) {
                 itemCount += 1;
                 total += price3;
@@ -300,6 +310,11 @@ public class Main1 {
                 total += price2;
                 items[i] = item2;
                 prices[i] = String.valueOf(price2);
+            } else if (customerOption2.equals("3")) {
+                itemCount += 1;
+                total += price3;
+                items[i] = item3;
+                prices[i] = String.valueOf(price3);
             } else if (customerOption2.equals("4")) {
                 itemCount += 1;
                 total += price4;
@@ -342,6 +357,11 @@ public class Main1 {
                 total += price3;
                 items[i] = item3;
                 prices[i] = String.valueOf(price3);
+            } else if (customerOption2.equals("4")) {
+                itemCount += 1;
+                total += price4;
+                items[i] = item4;
+                prices[i] = String.valueOf(price4);
             } else if (customerOption2.equals("E")) {
                 ReceiptView();
                 System.exit(0);
