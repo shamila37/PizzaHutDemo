@@ -1,5 +1,11 @@
 package org.example;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,6 +36,29 @@ public class Task1 {
 
     //    -------------   Main method start   -------------
     public static void main(String[] args) {
+//        JSONParser parser = new JSONParser();
+//
+//        try {
+//            Object obj = parser.parse(new FileReader("menuList.json"));
+//            JSONObject pizzaItems = (JSONObject) obj;
+//            JSONArray pizzaItemsDetails = (JSONArray) pizzaItems.get("pizzaItems");
+//
+//            for (int i = 0; i < 4; i++) {
+//                JSONObject pizza = (JSONObject) pizzaItemsDetails.get(i);
+//                String name = (String) pizza.get("name");
+//                double price = (double) pizza.get("price");
+//                String description = (String) pizza.get("description");
+//
+//                System.out.println(name);
+//                System.out.println(price);
+//                System.out.println(description);
+//            }
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (org.json.simple.parser.ParseException e) {
+//            throw new RuntimeException(e);
+//        }
         HomeView();
     }
     //    -------------   Main method end   -------------
