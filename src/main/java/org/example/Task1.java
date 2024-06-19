@@ -18,47 +18,31 @@ public class Task1 {
     static String[] orderStep = {"first", "second", "third"};
     static ArrayList<String> itemsName = new ArrayList<String>();
     static String[] prices = {"", "", "", ""};
-
-    static String item1 = "BBQ Chicken Pizza";
-    static String item2 = "Devil Chicken Pizza";
-    static String item3 = "Vegi Pizza";
-    static String item4 = "Pork Pizza";
-
-    static double price1 = 1299.00;
-    static double price2 = 1499.00;
-    static double price3 = 999.00;
-    static double price4 = 1999.00;
-
-    static String description1 = "BBQ Chicken brest, Mozzarella Cheese, Bell Pepper";
-    static String description2 = "Devil Chicken brest, Mozzarella Cheese, Bell Pepper";
-    static String description3 = "Carrot & onions, Mozzarella Cheese, Bell Pepper";
-    static String description4 = "BBQ Pork, Mozzarella Cheese, Bell Pepper";
+    static String[] items = {"", "", "", ""};
+    static double[] price = new double[4];
+    static String[] descriptions = {"", "", "", ""};
 
     //    -------------   Main method start   -------------
     public static void main(String[] args) {
-//        JSONParser parser = new JSONParser();
-//
-//        try {
-//            Object obj = parser.parse(new FileReader("menuList.json"));
-//            JSONObject pizzaItems = (JSONObject) obj;
-//            JSONArray pizzaItemsDetails = (JSONArray) pizzaItems.get("pizzaItems");
-//
-//            for (int i = 0; i < 4; i++) {
-//                JSONObject pizza = (JSONObject) pizzaItemsDetails.get(i);
-//                String name = (String) pizza.get("name");
-//                double price = (double) pizza.get("price");
-//                String description = (String) pizza.get("description");
-//
-//                System.out.println(name);
-//                System.out.println(price);
-//                System.out.println(description);
-//            }
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        } catch (org.json.simple.parser.ParseException e) {
-//            throw new RuntimeException(e);
-//        }
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(new FileReader("menuList.json"));
+            JSONObject pizzaItems = (JSONObject) obj;
+            JSONArray pizzaItemsDetails = (JSONArray) pizzaItems.get("pizzaItems");
+
+            for (int i = 0; i < 4; i++) {
+                JSONObject pizza = (JSONObject) pizzaItemsDetails.get(i);
+                items[i] = (String) pizza.get("name");
+                price[i] = (double) pizza.get("price");
+                descriptions[i] = (String) pizza.get("description");
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (org.json.simple.parser.ParseException e) {
+            throw new RuntimeException(e);
+        }
         HomeView();
     }
     //    -------------   Main method end   -------------
@@ -90,10 +74,10 @@ public class Task1 {
     //    -------------   HomeView method end   -------------
 
     private static void Items() {
-        System.out.println("#1 " + item1 + " - " + price1 + " " + currencyCode);
-        System.out.println("#2 " + item2 + " - " + price2 + " " + currencyCode);
-        System.out.println("#3 " + item3 + " - " + price3 + " " + currencyCode);
-        System.out.println("#4 " + item4 + " - " + price4 + " " + currencyCode);
+        System.out.println("#1 " + items[0] + " - " + price[0] + " " + currencyCode);
+        System.out.println("#2 " + items[1] + " - " + price[1] + " " + currencyCode);
+        System.out.println("#3 " + items[2] + " - " + price[2] + " " + currencyCode);
+        System.out.println("#4 " + items[3] + " - " + price[3] + " " + currencyCode);
     }
 
     //    -------------   MainMenu method start   -------------
@@ -117,9 +101,9 @@ public class Task1 {
     //    -------------   MainMenu method end   -------------
 
     private static void AddItem1() {
-        System.out.println("\nName        : " + item1);
-        System.out.println("Description : " + description1);
-        System.out.println("Price       : " + price1 + " " + currencyCode);
+        System.out.println("\nName        : " + items[0]);
+        System.out.println("Description : " + descriptions[0]);
+        System.out.println("Price       : " + price[0] + " " + currencyCode);
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -129,9 +113,9 @@ public class Task1 {
     }
 
     private static void AddItem2() {
-        System.out.println("\nName        : " + item2);
-        System.out.println("Description : " + description2);
-        System.out.println("Price       : " + price2 + " " + currencyCode);
+        System.out.println("\nName        : " + items[1]);
+        System.out.println("Description : " + descriptions[1]);
+        System.out.println("Price       : " + price[1] + " " + currencyCode);
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -141,9 +125,9 @@ public class Task1 {
     }
 
     private static void AddItem3() {
-        System.out.println("\nName        : " + item3);
-        System.out.println("Description : " + description3);
-        System.out.println("Price       : " + price3 + " " + currencyCode);
+        System.out.println("\nName        : " + items[2]);
+        System.out.println("Description : " + descriptions[2]);
+        System.out.println("Price       : " + price[2] + " " + currencyCode);
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -153,9 +137,9 @@ public class Task1 {
     }
 
     private static void AddItem4() {
-        System.out.println("\nName        : " + item4);
-        System.out.println("Description : " + description4);
-        System.out.println("Price       : " + price4 + " " + currencyCode);
+        System.out.println("\nName        : " + items[3]);
+        System.out.println("Description : " + descriptions[3]);
+        System.out.println("Price       : " + price[3] + " " + currencyCode);
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -175,30 +159,30 @@ public class Task1 {
         switch (customerOption2) {
             case "1" -> {
                 itemCount += 1;
-                total += price1;
-                itemsName.add(item1);
-                prices[0] = String.valueOf(price1);
+                total += price[0];
+                itemsName.add(items[0]);
+                prices[0] = String.valueOf(price[0]);
                 Choice();
             }
             case "2" -> {
                 itemCount += 1;
-                total += price2;
-                itemsName.add(item2);
-                prices[0] = String.valueOf(price2);
+                total += price[1];
+                itemsName.add(items[1]);
+                prices[0] = String.valueOf(price[1]);
                 Choice();
             }
             case "3" -> {
                 itemCount += 1;
-                total += price3;
-                itemsName.add(item3);
-                prices[0] = String.valueOf(price3);
+                total += price[2];
+                itemsName.add(items[2]);
+                prices[0] = String.valueOf(price[2]);
                 Choice();
             }
             case "4" -> {
                 itemCount += 1;
-                total += price4;
-                itemsName.add(item4);
-                prices[0] = String.valueOf(price4);
+                total += price[3];
+                itemsName.add(items[3]);
+                prices[0] = String.valueOf(price[3]);
                 Choice();
             }
             case "0" -> MainMenuView();
@@ -217,27 +201,27 @@ public class Task1 {
             switch (customerOption2) {
                 case "1" -> {
                     itemCount += 1;
-                    total += price1;
-                    itemsName.add(item1);
-                    prices[i] = String.valueOf(price1);
+                    total += price[0];
+                    itemsName.add(items[0]);
+                    prices[i] = String.valueOf(price[0]);
                 }
                 case "2" -> {
                     itemCount += 1;
-                    total += price2;
-                    itemsName.add(item2);
-                    prices[i] = String.valueOf(price2);
+                    total += price[1];
+                    itemsName.add(items[1]);
+                    prices[i] = String.valueOf(price[1]);
                 }
                 case "3" -> {
                     itemCount += 1;
-                    total += price3;
-                    itemsName.add(item3);
-                    prices[i] = String.valueOf(price3);
+                    total += price[2];
+                    itemsName.add(items[2]);
+                    prices[i] = String.valueOf(price[2]);
                 }
                 case "4" -> {
                     itemCount += 1;
-                    total += price4;
-                    itemsName.add(item4);
-                    prices[i] = String.valueOf(price4);
+                    total += price[3];
+                    itemsName.add(items[3]);
+                    prices[i] = String.valueOf(price[3]);
                 }
                 case "E" -> {
                     ReceiptView();
