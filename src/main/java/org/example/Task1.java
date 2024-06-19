@@ -1,11 +1,9 @@
 package org.example;
 
-// ------------------    Upgraded version of Main2.java    ------------------
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Task1 {
 
     static Scanner input = new Scanner(System.in);
     static int itemCount = 0;
