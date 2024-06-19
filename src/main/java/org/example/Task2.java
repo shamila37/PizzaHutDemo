@@ -1,5 +1,10 @@
 package org.example;
 
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.JSONParser;
+
+//import java.io.FileReader;
+//import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,7 +18,6 @@ public class Task2 {
     static ArrayList<String> itemsName = new ArrayList<String>();
     static ArrayList<String> itemsSizes = new ArrayList<String>();
     static ArrayList<String> prices = new ArrayList<String>();
-//    static String[] prices = {"", "", "", ""};
 
     static String item;
     static String itemNumber;
@@ -49,6 +53,28 @@ public class Task2 {
 
     //    -------------   Main method start   -------------
     public static void main(String[] args) {
+
+//        JSONParser parser = new JSONParser();
+//
+//        try {
+//            Object obj = parser.parse(new FileReader("menuList.json"));
+//
+//            JSONObject pizzaItems = (JSONObject) obj;
+//            JSONObject pizzaItemsDetails = (JSONObject) pizzaItems.get("pizzaItems");
+//
+//            String name = (String) pizzaItemsDetails.get("name");
+//            double price = (double) pizzaItemsDetails.get("price");
+//            String description = (String) pizzaItemsDetails.get("description");
+//
+//            System.out.println(name);
+//            System.out.println(price);
+//            System.out.println(description);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (org.json.simple.parser.ParseException e) {
+//            throw new RuntimeException(e);
+//        }
         HomeView();
     }
     //    -------------   Main method end   -------------
