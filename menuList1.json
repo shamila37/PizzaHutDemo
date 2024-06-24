@@ -27,6 +27,20 @@
       "mediumPrice": 1599.0,
       "smallPrice": 1199.0,
       "description": "BBQ Pork, Mozzarella Cheese, Bell Pepper"
+    },
+    {
+      "name": "BBQ Chicken Pizza",
+      "largePrice": 1899.0,
+      "mediumPrice": 1399.0,
+      "smallPrice": 999.0,
+      "description": "BBQ Chicken brest, Mozzarella Cheese, Bell Pepper"
+    },
+    {
+      "name": "Devil Chicken Pizza",
+      "largePrice": 1999.0,
+      "mediumPrice": 1499.0,
+      "smallPrice": 1099.0,
+      "description": "Devil Chicken brest, Mozzarella Cheese, Bell Pepper"
     }
   ]
 }
