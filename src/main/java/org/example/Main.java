@@ -38,7 +38,7 @@ public class Main {
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader("menuList1.json"));
+            Object obj = parser.parse(new FileReader("menuList.json"));
             JSONObject pizzaItems = (JSONObject) obj;
             JSONArray pizzaItemsDetails = (JSONArray) pizzaItems.get("pizzaItems");
 
