@@ -63,7 +63,7 @@ public class Main {
     //    -------------   HomeView method start   -------------
     public static void HomeView(){
         System.out.println("\nWelcome to PizzaHut!");
-        System.out.println("\nNow can order pizzas in different sizes!\n");
+        System.out.println("\nNow you can order customized pizzas!\n");
         System.out.println("To View our menu, press [1]");
         System.out.println("To place an Order, press [2]");
         System.out.println("Press [x] to exit the store\n");
@@ -162,24 +162,76 @@ public class Main {
                 itemsName.add(items.get(i));
                 itemsSizes.add(size1);
                 prices.add(String.valueOf(largePrices.get(i)));
-                MakeOrderScreen1();
+                CustomizePizzaScreen();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
                 total += mediumPrices.get(i);
                 itemsName.add(items.get(i));
                 itemsSizes.add(size2);
                 prices.add(String.valueOf(mediumPrices.get(i)));
-                MakeOrderScreen1();
+                CustomizePizzaScreen();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
                 total += smallPrices.get(i);
                 itemsName.add(items.get(i));
                 itemsSizes.add(size3);
                 prices.add(String.valueOf(smallPrices.get(i)));
-                MakeOrderScreen1();
+                CustomizePizzaScreen();
             } else {
                 System.out.println("Please enter a valid input.");
             }
+        }
+    }
+
+    private static void CustomizePizzaScreen() {
+        System.out.println("\nDo you want to customize your pizza?\n");
+        System.out.println("[y] Yes\n[n] No\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("y")) {
+            CustomizationList();
+        } else if (customerOption3.equals("n")) {
+            MakeOrderScreen1();
+        }
+    }
+
+    private static void CustomizationList() {
+        System.out.println("\nPlease select an addon you want to add.\n");
+        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
+        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("1")) {
+            CustomizationList1();
+        } else if (customerOption3.equals("2")) {
+            CustomizationList1();
+        } else if (customerOption3.equals("3")) {
+            CustomizationList1();
+        } else if (customerOption3.equals("0")){
+            MakeOrderScreen1();
+        } else {
+            System.out.println("Please enter a valid input");
+            CustomizationList();
+        }
+    }
+
+    private static void CustomizationList1() {
+        System.out.println("\nDo you want to add another addon.\n");
+        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
+        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("1")) {
+            CustomizationList1();
+        } else if (customerOption3.equals("2")) {
+            CustomizationList1();
+        } else if (customerOption3.equals("3")) {
+            CustomizationList1();
+        } else if (customerOption3.equals("0")){
+            MakeOrderScreen1();
+        } else {
+            System.out.println("Please enter a valid input");
+            CustomizationList1();
         }
     }
 
@@ -218,26 +270,79 @@ public class Main {
                 itemsName.add(items.get(i));
                 itemsSizes.add(size1);
                 prices.add(String.valueOf(largePrices.get(i)));
-                MakeOrderScreen2();
+                CustomizePizzaScreen1();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
                 total += mediumPrices.get(i);
                 itemsName.add(items.get(i));
                 itemsSizes.add(size2);
                 prices.add(String.valueOf(mediumPrices.get(i)));
-                MakeOrderScreen2();
+                CustomizePizzaScreen1();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
                 total += smallPrices.get(i);
                 itemsName.add(items.get(i));
                 itemsSizes.add(size3);
                 prices.add(String.valueOf(smallPrices.get(i)));
-                MakeOrderScreen2();
+                CustomizePizzaScreen1();
             } else {
                 System.out.println("Please enter a valid input.");
             }
         }
     }
+
+    private static void CustomizePizzaScreen1() {
+        System.out.println("\nDo you want to customize your pizza?\n");
+        System.out.println("[y] Yes\n[n] No\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("y")) {
+            CustomizationList2();
+        } else if (customerOption3.equals("n")) {
+            MakeOrderScreen2();
+        }
+    }
+
+    private static void CustomizationList2() {
+        System.out.println("\nPlease select an addon you want to add.\n");
+        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
+        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("1")) {
+            CustomizationList3();
+        } else if (customerOption3.equals("2")) {
+            CustomizationList3();
+        } else if (customerOption3.equals("3")) {
+            CustomizationList3();
+        } else if (customerOption3.equals("0")){
+            MakeOrderScreen2();
+        } else {
+            System.out.println("Please enter a valid input");
+            CustomizationList2();
+        }
+    }
+
+    private static void CustomizationList3() {
+        System.out.println("\nDo you want to add another addon.\n");
+        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
+        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("1")) {
+            CustomizationList3();
+        } else if (customerOption3.equals("2")) {
+            CustomizationList3();
+        } else if (customerOption3.equals("3")) {
+            CustomizationList3();
+        } else if (customerOption3.equals("0")){
+            MakeOrderScreen2();
+        } else {
+            System.out.println("Please enter a valid input");
+            CustomizationList3();
+        }
+    }
+
     public static void MakeOrderScreen2() {
         System.out.println("\nPlease select " + orderStep[2] + " item you want to buy.\n");
         Items();
@@ -273,27 +378,79 @@ public class Main {
                 itemsName.add(items.get(i));
                 itemsSizes.add(size1);
                 prices.add(String.valueOf(largePrices.get(i)));
-                ReceiptView();
-                System.exit(0);
+                CustomizePizzaScreen2();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
                 total += mediumPrices.get(i);
                 itemsName.add(items.get(i));
                 itemsSizes.add(size2);
                 prices.add(String.valueOf(mediumPrices.get(i)));
-                ReceiptView();
-                System.exit(0);
+                CustomizePizzaScreen2();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
                 total += smallPrices.get(i);
                 itemsName.add(items.get(i));
                 itemsSizes.add(size3);
                 prices.add(String.valueOf(smallPrices.get(i)));
-                ReceiptView();
-                System.exit(0);
+                CustomizePizzaScreen2();
             } else {
                 System.out.println("Please enter a valid input.");
             }
+        }
+    }
+
+    private static void CustomizePizzaScreen2() {
+        System.out.println("\nDo you want to customize your pizza?\n");
+        System.out.println("[y] Yes\n[n] No\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("y")) {
+            CustomizationList4();
+        } else if (customerOption3.equals("n")) {
+            ReceiptView();
+            System.exit(0);
+        }
+    }
+
+    private static void CustomizationList4() {
+        System.out.println("\nPlease select an addon you want to add.\n");
+        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
+        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("1")) {
+            CustomizationList5();
+        } else if (customerOption3.equals("2")) {
+            CustomizationList5();
+        } else if (customerOption3.equals("3")) {
+            CustomizationList5();
+        } else if (customerOption3.equals("0")){
+            ReceiptView();
+            System.exit(0);
+        } else {
+            System.out.println("Please enter a valid input");
+            CustomizationList4();
+        }
+    }
+
+    private static void CustomizationList5() {
+        System.out.println("\nDo you want to add another addon.\n");
+        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
+        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        if (customerOption3.equals("1")) {
+            CustomizationList5();
+        } else if (customerOption3.equals("2")) {
+            CustomizationList5();
+        } else if (customerOption3.equals("3")) {
+            CustomizationList5();
+        } else if (customerOption3.equals("0")){
+            ReceiptView();
+            System.exit(0);
+        } else {
+            System.out.println("Please enter a valid input");
+            CustomizationList5();
         }
     }
 
