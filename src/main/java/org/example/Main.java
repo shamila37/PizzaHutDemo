@@ -13,6 +13,8 @@ public class Main {
     static Scanner input = new Scanner(System.in);
     static int itemCount = 0;
     static double total;
+    static double addonsTotal1, addonsTotal2, addonsTotal3;
+    static String addon1, addon2, addon3;
     static String currencyCode = "LKR";
     static String[] orderStep = {"first", "second", "third"};
     static ArrayList<String> itemsName = new ArrayList<String>();
@@ -23,6 +25,14 @@ public class Main {
     static ArrayList<Double> mediumPrices = new ArrayList<Double>();
     static ArrayList<Double> smallPrices = new ArrayList<Double>();
     static ArrayList<String> descriptions = new ArrayList<String>();
+    static ArrayList<String> addonsName1 = new ArrayList<String>();
+    static ArrayList<String> addonsName2 = new ArrayList<String>();
+    static ArrayList<String> addonsName3 = new ArrayList<String>();
+    static ArrayList<String> addonsPrice1 = new ArrayList<String>();
+    static ArrayList<String> addonsPrice2 = new ArrayList<String>();
+    static ArrayList<String> addonsPrice3 = new ArrayList<String>();
+    static ArrayList<String> name = new ArrayList<String>();
+    static ArrayList<Double> price = new ArrayList<Double>();
     static String item;
     static String itemNumber;
     static String size1 = "Large";
@@ -50,6 +60,17 @@ public class Main {
                 mediumPrices.add((double) pizza.get("mediumPrice"));
                 smallPrices.add((double) pizza.get("smallPrice"));
                 descriptions.add((String) pizza.get("description"));
+            }
+
+            Object obj1 = parser.parse(new FileReader("addons.json"));
+            JSONObject addonsItems = (JSONObject) obj1;
+            JSONArray addonsItemsDetails = (JSONArray) addonsItems.get("addons");
+
+            for (int i = 0; i < addonsItemsDetails.size(); i++) {
+                JSONObject addons = (JSONObject) addonsItemsDetails.get(i);
+
+                name.add((String) addons.get("name"));
+                price.add((double) addons.get("price"));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -189,50 +210,58 @@ public class Main {
 
         String customerOption3 = input.nextLine();
         if (customerOption3.equals("y")) {
+            addon1 = "one";
             CustomizationList();
         } else if (customerOption3.equals("n")) {
+            addon1 = "oneNo";
             MakeOrderScreen1();
+        }
+    }
+
+    private static void Addons() {
+        for (int j = 0; j < name.size(); j++) {
+            System.out.println("#" + (j + 1) + " Add " + name.get(j) + " - " + price.get(j) + " " + currencyCode);
         }
     }
 
     private static void CustomizationList() {
         System.out.println("\nPlease select an addon you want to add.\n");
-        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
-        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+        Addons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
 
         String customerOption3 = input.nextLine();
-        if (customerOption3.equals("1")) {
-            CustomizationList1();
-        } else if (customerOption3.equals("2")) {
-            CustomizationList1();
-        } else if (customerOption3.equals("3")) {
-            CustomizationList1();
-        } else if (customerOption3.equals("0")){
-            MakeOrderScreen1();
-        } else {
-            System.out.println("Please enter a valid input");
-            CustomizationList();
+        for (int j = 0; j < name.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                addonsTotal1 += price.get(j);
+                addonsName1.add(name.get(j));
+                addonsPrice1.add(String.valueOf(price.get(j)));
+                CustomizationList1();
+            } else if (customerOption3.equals("0")){
+                MakeOrderScreen1();
+            }
         }
+        System.out.print("\nPlease enter a valid input");
+        CustomizationList();
     }
 
     private static void CustomizationList1() {
         System.out.println("\nDo you want to add another addon.\n");
-        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
-        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+        Addons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
 
         String customerOption3 = input.nextLine();
-        if (customerOption3.equals("1")) {
-            CustomizationList1();
-        } else if (customerOption3.equals("2")) {
-            CustomizationList1();
-        } else if (customerOption3.equals("3")) {
-            CustomizationList1();
-        } else if (customerOption3.equals("0")){
-            MakeOrderScreen1();
-        } else {
-            System.out.println("Please enter a valid input");
-            CustomizationList1();
+        for (int j = 0; j < name.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                addonsTotal1 += price.get(j);
+                addonsName1.add(name.get(j));
+                addonsPrice1.add(String.valueOf(price.get(j)));
+                CustomizationList1();
+            } else if (customerOption3.equals("0")){
+                MakeOrderScreen1();
+            }
         }
+        System.out.print("\nPlease enter a valid input");
+        CustomizationList1();
     }
 
     public static void MakeOrderScreen1() {
@@ -297,50 +326,52 @@ public class Main {
 
         String customerOption3 = input.nextLine();
         if (customerOption3.equals("y")) {
+            addon2 = "two";
             CustomizationList2();
         } else if (customerOption3.equals("n")) {
+            addon2 = "twoNo";
             MakeOrderScreen2();
         }
     }
 
     private static void CustomizationList2() {
         System.out.println("\nPlease select an addon you want to add.\n");
-        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
-        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+        Addons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
 
         String customerOption3 = input.nextLine();
-        if (customerOption3.equals("1")) {
-            CustomizationList3();
-        } else if (customerOption3.equals("2")) {
-            CustomizationList3();
-        } else if (customerOption3.equals("3")) {
-            CustomizationList3();
-        } else if (customerOption3.equals("0")){
-            MakeOrderScreen2();
-        } else {
-            System.out.println("Please enter a valid input");
-            CustomizationList2();
+        for (int j = 0; j < name.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                addonsTotal2 += price.get(j);
+                addonsName2.add(name.get(j));
+                addonsPrice2.add(String.valueOf(price.get(j)));
+                CustomizationList3();
+            } else if (customerOption3.equals("0")){
+                MakeOrderScreen2();
+            }
         }
+        System.out.print("\nPlease enter a valid input");
+        CustomizationList2();
     }
 
     private static void CustomizationList3() {
         System.out.println("\nDo you want to add another addon.\n");
-        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
-        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+        Addons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
 
         String customerOption3 = input.nextLine();
-        if (customerOption3.equals("1")) {
-            CustomizationList3();
-        } else if (customerOption3.equals("2")) {
-            CustomizationList3();
-        } else if (customerOption3.equals("3")) {
-            CustomizationList3();
-        } else if (customerOption3.equals("0")){
-            MakeOrderScreen2();
-        } else {
-            System.out.println("Please enter a valid input");
-            CustomizationList3();
+        for (int j = 0; j < name.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                addonsTotal2 += price.get(j);
+                addonsName2.add(name.get(j));
+                addonsPrice2.add(String.valueOf(price.get(j)));
+                CustomizationList3();
+            } else if (customerOption3.equals("0")){
+                MakeOrderScreen2();
+            }
         }
+        System.out.print("\nPlease enter a valid input");
+        CustomizationList3();
     }
 
     public static void MakeOrderScreen2() {
@@ -405,8 +436,10 @@ public class Main {
 
         String customerOption3 = input.nextLine();
         if (customerOption3.equals("y")) {
+            addon3 = "three";
             CustomizationList4();
         } else if (customerOption3.equals("n")) {
+            addon3 = "threeNo";
             ReceiptView();
             System.exit(0);
         }
@@ -414,44 +447,44 @@ public class Main {
 
     private static void CustomizationList4() {
         System.out.println("\nPlease select an addon you want to add.\n");
-        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
-        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+        Addons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
 
         String customerOption3 = input.nextLine();
-        if (customerOption3.equals("1")) {
-            CustomizationList5();
-        } else if (customerOption3.equals("2")) {
-            CustomizationList5();
-        } else if (customerOption3.equals("3")) {
-            CustomizationList5();
-        } else if (customerOption3.equals("0")){
-            ReceiptView();
-            System.exit(0);
-        } else {
-            System.out.println("Please enter a valid input");
-            CustomizationList4();
+        for (int j = 0; j < name.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                addonsTotal3 += price.get(j);
+                addonsName3.add(name.get(j));
+                addonsPrice3.add(String.valueOf(price.get(j)));
+                CustomizationList5();
+            } else if (customerOption3.equals("0")){
+                ReceiptView();
+                System.exit(0);
+            }
         }
+        System.out.print("\nPlease enter a valid input");
+        CustomizationList4();
     }
 
     private static void CustomizationList5() {
         System.out.println("\nDo you want to add another addon.\n");
-        System.out.println("#1 Add Cheese - 100.00 LKR\n#2 Add Vegetable - 75.00 LKR\n#3 Add Prawns - 125.00 LKR\n");
-        System.out.println("Press relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+        Addons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
 
         String customerOption3 = input.nextLine();
-        if (customerOption3.equals("1")) {
-            CustomizationList5();
-        } else if (customerOption3.equals("2")) {
-            CustomizationList5();
-        } else if (customerOption3.equals("3")) {
-            CustomizationList5();
-        } else if (customerOption3.equals("0")){
-            ReceiptView();
-            System.exit(0);
-        } else {
-            System.out.println("Please enter a valid input");
-            CustomizationList5();
+        for (int j = 0; j < name.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                addonsTotal3 += price.get(j);
+                addonsName3.add(name.get(j));
+                addonsPrice3.add(String.valueOf(price.get(j)));
+                CustomizationList5();
+            } else if (customerOption3.equals("0")){
+                ReceiptView();
+                System.exit(0);
+            }
         }
+        System.out.print("\nPlease enter a valid input");
+        CustomizationList5();
     }
 
     //    -------------   ReceiptView method start   -------------
@@ -462,8 +495,24 @@ public class Main {
         for (int i = 0; i < itemsName.size(); i++) {
             System.out.println("#" + (i+1) + " " + itemsName.get(i));
             System.out.println("          - " + itemsSizes.get(i) + " - " + prices.get(i) + " " + currencyCode);
+            if (addon1 == "one" & i == 0){
+                System.out.println("    Addons");
+                for (int j = 0; j < addonsName1.size(); j++) {
+                    System.out.println("          - " + addonsName1.get(j) + " - " + addonsPrice1.get(j) + " " + currencyCode);
+                }
+            } else if (addon2 == "two" & i == 1) {
+                System.out.println("    Addons");
+                for (int j = 0; j < addonsName2.size(); j++) {
+                    System.out.println("          - " + addonsName2.get(j) + " - " + addonsPrice2.get(j) + " " + currencyCode);
+                }
+            } else if (addon3 == "three" & i == 2) {
+                System.out.println("    Addons");
+                for (int j = 0; j < addonsName3.size(); j++) {
+                    System.out.println("          - " + addonsName3.get(j) + " - " + addonsPrice3.get(j) + " " + currencyCode);
+                }
+            }
         }
-        System.out.println("\n        Total : " + total + " " + currencyCode);
+        System.out.println("\n        Total : " + ( total + addonsTotal1 + addonsTotal2 + addonsTotal3 )+ " " + currencyCode);
         System.out.println("-------------------------------------");
         System.out.println("     Thank You For Ordering");
         System.out.println("-------------------------------------");
