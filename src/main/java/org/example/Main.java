@@ -84,16 +84,22 @@ public class Main {
     //    -------------   HomeView method start   -------------
     public static void HomeView(){
         System.out.println("\nWelcome to PizzaHut!");
-        System.out.println("\nNow you can order customized pizzas!\n");
-        System.out.println("To View our menu, press [1]");
-        System.out.println("To place an Order, press [2]");
+        System.out.println("\nCheck out our new items!\n");
+        System.out.println("To View our Pizza menu, press [1]");
+        System.out.println("To View our Soft Drinks menu, press [2]");
+        System.out.println("To View our Hot Beverages menu, press [3]");
+        System.out.println("To View our Cakes menu, press [4]");
+        System.out.println("To place an Order, press [6]");
         System.out.println("Press [x] to exit the store\n");
 
         while(true) {
             String customerOption = input.nextLine();
             switch (customerOption) {
                 case "1" -> MainMenuView();
-                case "2" -> MakeOrderScreen();
+//                case "2" -> SoftDrinkMenuView();
+//                case "3" -> HotBeveragesMenuView();
+//                case "4" -> CakesMenuView();
+                case "6" -> MainMenuView();
                 case "x" -> {
                     System.out.println("\nThank you for visiting Pizza Hut, See you next time.\n");
                     System.exit(0);
