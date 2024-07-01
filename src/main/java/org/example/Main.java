@@ -46,9 +46,9 @@ public class Main {
 
     static double drinkAddonsTotal1, drinkAddonsTotal2, drinkAddonsTotal3;
     static String DrinkAddon1, DrinkAddon2, DrinkAddon3;
-    static ArrayList<String> drinkName = new ArrayList<String>();
-    static ArrayList<Double> drinkPrice = new ArrayList<Double>();
     static ArrayList<String> DrinkItems = new ArrayList<String>();
+    static ArrayList<Double> drinkPrice = new ArrayList<Double>();
+    static ArrayList<String> drinkName = new ArrayList<String>();
     static ArrayList<String> drinkLargeName = new ArrayList<String>();
     static ArrayList<String> drinkLargeCode = new ArrayList<String>();
     static ArrayList<Double> drinkLargePrice = new ArrayList<Double>();
@@ -66,9 +66,32 @@ public class Main {
     static ArrayList<String> drinkAddonsPrice2 = new ArrayList<String>();
     static ArrayList<String> drinkAddonsPrice3 = new ArrayList<String>();
 
+    static double beverageAddonsTotal1, beverageAddonsTotal2, beverageAddonsTotal3;
+    static String BeverageAddon1, BeverageAddon2, BeverageAddon3;
+    static ArrayList<String> BeverageItems = new ArrayList<String>();
+    static ArrayList<Double> beveragePrice = new ArrayList<Double>();
+    static ArrayList<String> beverageName = new ArrayList<String>();
+    static ArrayList<String> beverageLargeName = new ArrayList<String>();
+    static ArrayList<String> beverageLargeCode = new ArrayList<String>();
+    static ArrayList<Double> beverageLargePrice = new ArrayList<Double>();
+    static ArrayList<String> beverageRegularName = new ArrayList<String>();
+    static ArrayList<String> beverageRegularCode = new ArrayList<String>();
+    static ArrayList<Double> beverageRegularPrice = new ArrayList<Double>();
+    static ArrayList<String> beverageSmallName = new ArrayList<String>();
+    static ArrayList<String> beverageSmallCode = new ArrayList<String>();
+    static ArrayList<Double> beverageSmallPrice = new ArrayList<Double>();
+    static ArrayList<String> beverageDescriptions = new ArrayList<String>();
+    static ArrayList<String> beverageAddonsName1 = new ArrayList<String>();
+    static ArrayList<String> beverageAddonsName2 = new ArrayList<String>();
+    static ArrayList<String> beverageAddonsName3 = new ArrayList<String>();
+    static ArrayList<String> beverageAddonsPrice1 = new ArrayList<String>();
+    static ArrayList<String> beverageAddonsPrice2 = new ArrayList<String>();
+    static ArrayList<String> beverageAddonsPrice3 = new ArrayList<String>();
+
     static String size1 = "Large";
     static String size2 = "Medium";
     static String size3 = "Small";
+    static String size4 = "Regular";
 
     //    -------------   Main method start   -------------
     public static void main(String[] args) {
@@ -151,6 +174,63 @@ public class Main {
                 drinkName.add((String) drinkAddons.get("name"));
                 drinkPrice.add((double) drinkAddons.get("price"));
             }
+
+            Object obj4 = parser.parse(new FileReader("hotBeveragesMenuList.json"));
+            JSONObject beverageItems = (JSONObject) obj4;
+            JSONArray beverageItemsDetails = (JSONArray) beverageItems.get("hotBeveragesItems");
+
+            for (int i = 0; i < beverageItemsDetails.size(); i++) {
+                JSONObject beverages = (JSONObject) beverageItemsDetails.get(i);
+
+                BeverageItems.add((String) beverages.get("name"));
+
+                JSONObject large = (JSONObject) beverages.get("large");
+                if (large == null){
+                    beverageLargeName.add("");
+                    beverageLargeCode.add("");
+                    beverageLargePrice.add(0.0);
+                } else {
+                    beverageLargeName.add((String) large.get("name"));
+                    beverageLargeCode.add((String) large.get("code"));
+                    beverageLargePrice.add((double) large.get("price"));
+                }
+
+                JSONObject regular = (JSONObject) beverages.get("regular");
+                if (regular== null) {
+                    beverageRegularName.add("");
+                    beverageRegularCode.add("");
+                    beverageRegularPrice.add(0.0);
+                } else {
+                    beverageRegularName.add((String) regular.get("name"));
+                    beverageRegularCode.add((String) regular.get("code"));
+                    beverageRegularPrice.add((double) regular.get("price"));
+                }
+
+                JSONObject small = (JSONObject) beverages.get("small");
+                if (small == null) {
+                    beverageSmallName.add("");
+                    beverageSmallCode.add("");
+                    beverageSmallPrice.add(0.0);
+                } else {
+                    beverageSmallName.add((String) small.get("name"));
+                    beverageSmallCode.add((String) small.get("code"));
+                    beverageSmallPrice.add((double) small.get("price"));
+                }
+
+                beverageDescriptions.add((String) beverages.get("description"));
+            }
+
+            Object obj5 = parser.parse(new FileReader("hotBeveragesAddons.json"));
+            JSONObject beverageAddonsItems = (JSONObject) obj5;
+            JSONArray beverageAddonsItemsDetails = (JSONArray) beverageAddonsItems.get("hotBeveragesAddons");
+
+            for (int i = 0; i < beverageAddonsItemsDetails.size(); i++) {
+                JSONObject beverageAddons = (JSONObject) beverageAddonsItemsDetails.get(i);
+
+                beverageName.add((String) beverageAddons.get("name"));
+                beveragePrice.add((double) beverageAddons.get("price"));
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (org.json.simple.parser.ParseException e) {
@@ -176,7 +256,7 @@ public class Main {
             switch (customerOption) {
                 case "1" -> PizzaMenuView();
                 case "2" -> DrinkMenuView();
-//                case "3" -> HotBeveragesMenuView();
+                case "3" -> HotBeveragesMenuView();
 //                case "4" -> CakesMenuView();
                 case "6" -> MainMakeOrderScreen();
                 case "x" -> {
@@ -248,6 +328,32 @@ public class Main {
     }
     //    -------------   SoftDrinkMenu method end   -------------
 
+    private static void BeverageItems() {
+        for (int i = 0; i < BeverageItems.size(); i++) {
+            System.out.println("#" + (i+1) + " " + BeverageItems.get(i) + " - L " + beverageLargePrice.get(i) + " " + currencyCode + " | R " + beverageRegularPrice.get(i) + " " + currencyCode + " | S " + beverageSmallPrice.get(i) + " " + currencyCode);
+        }
+    }
+
+    //    -------------   BeveragesMenu method start   -------------
+    private static void HotBeveragesMenuView() {
+        while (true) {
+            System.out.println("\nHot Beverages Menu\n");
+            BeverageItems();
+            System.out.println("\n\nPress item number to view description\nOR\nPress [0] to go back\n");
+
+            String customerOption1 = input.nextLine();
+            for (int i = 0; i < BeverageItems.size(); i++) {
+                if (customerOption1.equals("" + (i+1))) {
+                    BeveragesAddItem(i);
+                } else if (customerOption1.equals("0")) {
+                    HomeView();
+                }
+            }
+            System.out.print("\nPlease enter a valid input");
+        }
+    }
+    //    -------------   BeveragesMenu method end   -------------
+
     private static void PizzaAddItem(int i) {
         System.out.println("\nName : " + PizzaItems.get(i));
         System.out.println("Description : " + pizzaDescriptions.get(i));
@@ -278,6 +384,21 @@ public class Main {
         }
     }
 
+    private static void BeveragesAddItem(int i) {
+        System.out.println("\nName : " + BeverageItems.get(i));
+        System.out.println("Description : " + beverageDescriptions.get(i));
+        System.out.println("Available Sizes : Large | Regular | Small");
+        System.out.println("Large Price : " + beverageLargePrice.get(i) + " " + currencyCode);
+        System.out.println("Regular Price : " + beverageRegularPrice.get(i) + " " + currencyCode);
+        System.out.println("Small Price : " + beverageSmallPrice.get(i) + " " + currencyCode);
+        System.out.println("\nPress any to go back\n");
+
+        String customerOption2 = input.nextLine();
+        if (customerOption2.equalsIgnoreCase("")) {
+            HotBeveragesMenuView();
+        }
+    }
+
     //    -------------   MainMakeOrderScreen method start   -------------
     public static void MainMakeOrderScreen() {
         System.out.println("\nYou can buy 3 items.");
@@ -296,7 +417,7 @@ public class Main {
 //                CakeMakeOrderScreen1();
             } else if (customerOption3.equals("2")){
                 itemChooseOrder.add(itemTypes[1]);
-//                HotBeverageMakeOrderScreen1();
+                HotBeverageMakeOrderScreen1();
             } else if (customerOption3.equals("3")){
                 PizzaMakeOrderScreen1();
             } else if (customerOption3.equals("4")){
@@ -348,12 +469,32 @@ public class Main {
     }
     //    -------------   DrinkMakeOrderScreen1 method end   -------------
 
+    //    -------------   HotBeverageMakeOrderScreen1 method start   -------------
+    public static void HotBeverageMakeOrderScreen1() {
+        System.out.println("\nPlease select an Item from our Hot Beverages Menu\n");
+        BeverageItems();
+        System.out.println("\n\nPress item number to select " + orderStep[0] + " item\nOR\nPress [0] to go back to Main menu\n");
+
+        String customerOption3 = input.nextLine();
+        for (int i = 0; i < BeverageItems.size(); i++) {
+            if (customerOption3.equals("" + (i+1))){
+                itemChooseOrder.add(itemTypes[3]);
+                BeverageFirstChoice(i);
+            } else if (customerOption3.equals("0")){
+                HotBeveragesMenuView();
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        HotBeverageMakeOrderScreen1();
+    }
+    //    -------------   HotBeverageMakeOrderScreen1 method end   -------------
+
     private static void PizzaFirstChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
             System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + pizzaSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select small\n");
+            System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select Small\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -388,7 +529,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + DrinkItems.get(i));
             System.out.println("Available options - L " + drinkLargePrice.get(i) + " " + currencyCode + " | M " + drinkMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select small\n");
+            System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select Small\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -418,6 +559,41 @@ public class Main {
         }
     }
 
+    private static void BeverageFirstChoice(int i) {
+        while (true) {
+            System.out.println("\nYou have selected #" + (i + 1) + " " + BeverageItems.get(i));
+            System.out.println("Available options - L " + beverageLargePrice.get(i) + " " + currencyCode + " | R " + beverageRegularPrice.get(i) + " " + currencyCode + " | S " + beverageSmallPrice.get(i));
+            System.out.println("\nPlease select a size you wish to buy.\n");
+            System.out.println("Press [L] to select Large\nPress [R] to select Regular\nPress [S] to select Small\n");
+
+            String customerOption4 = input.nextLine();
+            if (customerOption4.equals("L")) {
+                itemCount += 1;
+                total += beverageLargePrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size1);
+                prices.add(String.valueOf(beverageLargePrice.get(i)));
+                BeverageCustomizationList();
+            } else if (customerOption4.equals("R")) {
+                itemCount += 1;
+                total += beverageRegularPrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size4);
+                prices.add(String.valueOf(beverageRegularPrice.get(i)));
+                BeverageCustomizationList();
+            } else if (customerOption4.equals("S")) {
+                itemCount += 1;
+                total += beverageSmallPrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size3);
+                prices.add(String.valueOf(beverageSmallPrice.get(i)));
+                BeverageCustomizationList();
+            } else {
+                System.out.println("Please enter a valid input.");
+            }
+        }
+    }
+
     private static void PizzaAddons() {
         for (int j = 0; j < pizzaName.size(); j++) {
             System.out.println("#" + (j + 1) + " Add " + pizzaName.get(j) + " - " + pizzaPrice.get(j) + " " + currencyCode);
@@ -427,6 +603,12 @@ public class Main {
     private static void DrinkAddons() {
         for (int j = 0; j < drinkName.size(); j++) {
             System.out.println("#" + (j + 1) + " Add " + drinkName.get(j) + " - " + drinkPrice.get(j) + " " + currencyCode);
+        }
+    }
+
+    private static void BeverageAddons() {
+        for (int j = 0; j < beverageName.size(); j++) {
+            System.out.println("#" + (j + 1) + " Add " + beverageName.get(j) + " - " + beveragePrice.get(j) + " " + currencyCode);
         }
     }
 
@@ -472,6 +654,27 @@ public class Main {
         DrinkCustomizationList();
     }
 
+    private static void BeverageCustomizationList() {
+        System.out.println("\nPlease select an addon you want to add.\n");
+        BeverageAddons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        for (int j = 0; j < beverageName.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                beverageAddonsTotal1 += beveragePrice.get(j);
+                beverageAddonsName1.add(beverageName.get(j));
+                beverageAddonsPrice1.add(String.valueOf(beveragePrice.get(j)));
+                BeverageAddon1 = "one";
+                BeverageCustomizationList1();
+            } else if (customerOption3.equals("0")){
+                MainMakeOrderScreen1();
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        BeverageCustomizationList();
+    }
+
     private static void PizzaCustomizationList1() {
         System.out.println("\nDo you want to add another addon.\n");
         PizzaAddons();
@@ -512,6 +715,26 @@ public class Main {
         DrinkCustomizationList1();
     }
 
+    private static void BeverageCustomizationList1() {
+        System.out.println("\nDo you want to add another addon.\n");
+        BeverageAddons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        for (int j = 0; j < beverageName.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                beverageAddonsTotal1 += beveragePrice.get(j);
+                beverageAddonsName1.add(beverageName.get(j));
+                beverageAddonsPrice1.add(String.valueOf(beveragePrice.get(j)));
+                BeverageCustomizationList1();
+            } else if (customerOption3.equals("0")){
+                MainMakeOrderScreen1();
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        BeverageCustomizationList1();
+    }
+
     //    -------------   MainMakeOrderScreen1 method start   -------------
     public static void MainMakeOrderScreen1() {
         System.out.println("\nPlease select " + orderStep[1] + " item you want to buy.\n");
@@ -529,7 +752,7 @@ public class Main {
 //                CakeMakeOrderScreen2();
             } else if (customerOption3.equals("2")){
                 itemChooseOrder.add(itemTypes[1]);
-//                HotBeverageMakeOrderScreen2();
+                HotBeverageMakeOrderScreen2();
             } else if (customerOption3.equals("3")){
                 PizzaMakeOrderScreen2();
             } else if (customerOption3.equals("4")){
@@ -583,6 +806,28 @@ public class Main {
         }
         System.out.print("\nPlease enter a valid input");
         DrinkMakeOrderScreen2();
+    }
+
+    public static void HotBeverageMakeOrderScreen2() {
+        System.out.println("\nPlease select an Item from our Hot Beverages Menu\n");
+        BeverageItems();
+        System.out.println("\nPress item number to select as " + orderStep[1] + " item\nOR");
+        System.out.println("Press [E] to complete\nOR\nPress [0] to go back to Main menu\n");
+
+        String customerOption3 = input.nextLine();
+        for (int i = 0; i < BeverageItems.size(); i++) {
+            if (customerOption3.equals("" + (i+1))) {
+                itemChooseOrder.add(itemTypes[3]);
+                BeverageSecondChoice(i);
+            } else if (customerOption3.equals("E")) {
+                ReceiptView();
+                System.exit(0);
+            } else if (customerOption3.equals("0")){
+                HotBeveragesMenuView();
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        HotBeverageMakeOrderScreen2();
     }
 
     private static void PizzaSecondChoice(int i) {
@@ -655,6 +900,41 @@ public class Main {
         }
     }
 
+    private static void BeverageSecondChoice(int i) {
+        while (true) {
+            System.out.println("\nYou have selected #" + (i + 1) + " " + BeverageItems.get(i));
+            System.out.println("Available options - L " + beverageLargePrice.get(i) + " " + currencyCode + " | R " + beverageRegularPrice.get(i) + " " + currencyCode + " | S " + beverageSmallPrice.get(i));
+            System.out.println("\nPlease select a size you wish to buy.\n");
+            System.out.println("Press [L] to select Large\nPress [R] to select Regular\nPress [S] to select small\n");
+
+            String customerOption4 = input.nextLine();
+            if (customerOption4.equals("L")) {
+                itemCount += 1;
+                total += beverageLargePrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size1);
+                prices.add(String.valueOf(beverageLargePrice.get(i)));
+                BeverageCustomizationList2();
+            } else if (customerOption4.equals("R")) {
+                itemCount += 1;
+                total += beverageRegularPrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size4);
+                prices.add(String.valueOf(beverageRegularPrice.get(i)));
+                BeverageCustomizationList2();
+            } else if (customerOption4.equals("S")) {
+                itemCount += 1;
+                total += beverageSmallPrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size3);
+                prices.add(String.valueOf(beverageSmallPrice.get(i)));
+                BeverageCustomizationList2();
+            } else {
+                System.out.println("Please enter a valid input.");
+            }
+        }
+    }
+
     private static void PizzaCustomizationList2() {
         System.out.println("\nPlease select an addon you want to add.\n");
         PizzaAddons();
@@ -697,6 +977,27 @@ public class Main {
         DrinkCustomizationList2();
     }
 
+    private static void BeverageCustomizationList2() {
+        System.out.println("\nPlease select an addon you want to add.\n");
+        BeverageAddons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        for (int j = 0; j < beverageName.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                beverageAddonsTotal2 += beveragePrice.get(j);
+                beverageAddonsName2.add(beverageName.get(j));
+                beverageAddonsPrice2.add(String.valueOf(beveragePrice.get(j)));
+                BeverageAddon2 = "two";
+                BeverageCustomizationList3();
+            } else if (customerOption3.equals("0")){
+                MainMakeOrderScreen2();
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        BeverageCustomizationList2();
+    }
+
     private static void PizzaCustomizationList3() {
         System.out.println("\nDo you want to add another addon.\n");
         PizzaAddons();
@@ -737,6 +1038,26 @@ public class Main {
         DrinkCustomizationList3();
     }
 
+    private static void BeverageCustomizationList3() {
+        System.out.println("\nDo you want to add another addon.\n");
+        BeverageAddons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        for (int j = 0; j < beverageName.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                beverageAddonsTotal2 += beveragePrice.get(j);
+                beverageAddonsName2.add(beverageName.get(j));
+                beverageAddonsPrice2.add(String.valueOf(beveragePrice.get(j)));
+                BeverageCustomizationList3();
+            } else if (customerOption3.equals("0")){
+                MainMakeOrderScreen2();
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        BeverageCustomizationList3();
+    }
+
     //    -------------   MainMakeOrderScreen2 method start   -------------
     public static void MainMakeOrderScreen2() {
         System.out.println("\nPlease select " + orderStep[2] + " item you want to buy.\n");
@@ -754,7 +1075,7 @@ public class Main {
 //                CakeMakeOrderScreen3();
             } else if (customerOption3.equals("2")){
                 itemChooseOrder.add(itemTypes[1]);
-//                HotBeverageMakeOrderScreen3();
+                HotBeverageMakeOrderScreen3();
             } else if (customerOption3.equals("3")){
                 PizzaMakeOrderScreen3();
             } else if (customerOption3.equals("4")){
@@ -808,6 +1129,28 @@ public class Main {
         }
         System.out.print("\nPlease enter a valid input");
         DrinkMakeOrderScreen3();
+    }
+
+    public static void HotBeverageMakeOrderScreen3() {
+        System.out.println("\nPlease select an Item from our Hot Beverages Menu\n");
+        BeverageItems();
+        System.out.println("\nPress item number to select as " + orderStep[2] + " item\nOR");
+        System.out.println("Press [E] to complete\nOR\nPress [0] to go back to Main menu\n");
+
+        String customerOption3 = input.nextLine();
+        for (int i = 0; i < BeverageItems.size(); i++) {
+            if (customerOption3.equals("" + (i+1))){
+                itemChooseOrder.add(itemTypes[3]);
+                BeverageThirdChoice(i);
+            } else if (customerOption3.equals("E")) {
+                ReceiptView();
+                System.exit(0);
+            } else if (customerOption3.equals("0")){
+                HotBeveragesMenuView();
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        HotBeverageMakeOrderScreen3();
     }
 
     private static void PizzaThirdChoice(int i) {
@@ -880,6 +1223,41 @@ public class Main {
         }
     }
 
+    private static void BeverageThirdChoice(int i) {
+        while (true) {
+            System.out.println("\nYou have selected #" + (i + 1) + " " + BeverageItems.get(i));
+            System.out.println("Available options - L " + beverageLargePrice.get(i) + " " + currencyCode + " | M " + beverageRegularPrice.get(i) + " " + currencyCode + " | S " + beverageSmallPrice.get(i));
+            System.out.println("\nPlease select a size you wish to buy.\n");
+            System.out.println("Press [L] to select Large\nPress [R] to select Regular\nPress [S] to select small\n");
+
+            String customerOption4 = input.nextLine();
+            if (customerOption4.equals("L")) {
+                itemCount += 1;
+                total += beverageLargePrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size1);
+                prices.add(String.valueOf(beverageLargePrice.get(i)));
+                BeverageCustomizationList4();
+            } else if (customerOption4.equals("R")) {
+                itemCount += 1;
+                total += beverageRegularPrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size4);
+                prices.add(String.valueOf(beverageRegularPrice.get(i)));
+                BeverageCustomizationList4();
+            } else if (customerOption4.equals("S")) {
+                itemCount += 1;
+                total += beverageSmallPrice.get(i);
+                itemsName.add(BeverageItems.get(i));
+                itemsSizes.add(size3);
+                prices.add(String.valueOf(beverageSmallPrice.get(i)));
+                BeverageCustomizationList4();
+            } else {
+                System.out.println("Please enter a valid input.");
+            }
+        }
+    }
+
     private static void PizzaCustomizationList4() {
         System.out.println("\nPlease select an addon you want to add.\n");
         PizzaAddons();
@@ -924,6 +1302,28 @@ public class Main {
         DrinkCustomizationList4();
     }
 
+    private static void BeverageCustomizationList4() {
+        System.out.println("\nPlease select an addon you want to add.\n");
+        BeverageAddons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        for (int j = 0; j < beverageName.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                beverageAddonsTotal3 += beveragePrice.get(j);
+                beverageAddonsName3.add(beverageName.get(j));
+                beverageAddonsPrice3.add(String.valueOf(beveragePrice.get(j)));
+                BeverageAddon3 = "three";
+                BeverageCustomizationList5();
+            } else if (customerOption3.equals("0")){
+                ReceiptView();
+                System.exit(0);
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        BeverageCustomizationList4();
+    }
+
     private static void PizzaCustomizationList5() {
         System.out.println("\nDo you want to add another addon.\n");
         PizzaAddons();
@@ -966,6 +1366,27 @@ public class Main {
         DrinkCustomizationList5();
     }
 
+    private static void BeverageCustomizationList5() {
+        System.out.println("\nDo you want to add another addon.\n");
+        BeverageAddons();
+        System.out.println("\nPress relevant number to add the addon\nOR\nPress [0] to finish customization\n");
+
+        String customerOption3 = input.nextLine();
+        for (int j = 0; j < beverageName.size(); j++) {
+            if (customerOption3.equals("" + (j+1))){
+                beverageAddonsTotal3 += beveragePrice.get(j);
+                beverageAddonsName3.add(beverageName.get(j));
+                beverageAddonsPrice3.add(String.valueOf(beveragePrice.get(j)));
+                BeverageCustomizationList5();
+            } else if (customerOption3.equals("0")){
+                ReceiptView();
+                System.exit(0);
+            }
+        }
+        System.out.print("\nPlease enter a valid input");
+        BeverageCustomizationList5();
+    }
+
     //    -------------   ReceiptView method start   -------------
     private static void ReceiptView() {
         System.out.println("\nYou have ordered #" + itemCount + " number of items");
@@ -1005,9 +1426,26 @@ public class Main {
                 for (int j = 0; j < drinkAddonsName3.size(); j++) {
                     System.out.println("          - " + drinkAddonsName3.get(j) + " - " + drinkAddonsPrice3.get(j) + " " + currencyCode);
                 }
+            }else if (BeverageAddon1 == "one" & i == 0){
+                System.out.println("    Addons");
+                for (int j = 0; j < beverageAddonsName1.size(); j++) {
+                    System.out.println("          - " + beverageAddonsName1.get(j) + " - " + beverageAddonsPrice1.get(j) + " " + currencyCode);
+                }
+            } else if (BeverageAddon2 == "two" & i == 1) {
+                System.out.println("    Addons");
+                for (int j = 0; j < beverageAddonsName2.size(); j++) {
+                    System.out.println("          - " + beverageAddonsName2.get(j) + " - " + beverageAddonsPrice2.get(j) + " " + currencyCode);
+                }
+            } else if (BeverageAddon3 == "three" & i == 2) {
+                System.out.println("    Addons");
+                for (int j = 0; j < beverageAddonsName3.size(); j++) {
+                    System.out.println("          - " + beverageAddonsName3.get(j) + " - " + beverageAddonsPrice3.get(j) + " " + currencyCode);
+                }
             }
         }
-        System.out.println("\n        Total : " + ( total + pizzaAddonsTotal1 + pizzaAddonsTotal2 + pizzaAddonsTotal3 + drinkAddonsTotal1 + drinkAddonsTotal2 + drinkAddonsTotal3 )+ " " + currencyCode);
+        System.out.println("\n        Total : " + ( total + pizzaAddonsTotal1 + pizzaAddonsTotal2 + pizzaAddonsTotal3 +
+                                                            drinkAddonsTotal1 + drinkAddonsTotal2 + drinkAddonsTotal3 +
+                                                            beverageAddonsTotal1 + beverageAddonsTotal2 + beverageAddonsTotal3 )+ " " + currencyCode);
         System.out.println("-------------------------------------");
         System.out.println("     Thank You For Ordering");
         System.out.println("-------------------------------------");
