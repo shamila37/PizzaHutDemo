@@ -198,7 +198,7 @@ public class Main {
 
     private static void PizzasItems() {
         for (int i = 0; i < PizzaItems.size(); i++) {
-            System.out.println("#" + (i+1) + " " + PizzaItems.get(i) + " - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i) + " " + currencyCode);
+            System.out.println("#" + (i+1) + " " + PizzaItems.get(i) + " - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + pizzaSmallPrice.get(i) + " " + currencyCode);
         }
     }
 
@@ -254,7 +254,7 @@ public class Main {
         System.out.println("Available Sizes : Large | Medium | Small");
         System.out.println("Large Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
         System.out.println("Medium Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
-        System.out.println("Small Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
+        System.out.println("Small Price : " + pizzaSmallPrice.get(i) + " " + currencyCode);
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -351,7 +351,7 @@ public class Main {
     private static void PizzaFirstChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
-            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i));
+            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + pizzaSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
             System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select small\n");
 
@@ -372,10 +372,10 @@ public class Main {
                 PizzaCustomizationList();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
-                total += drinkSmallPrice.get(i);
+                total += pizzaSmallPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size3);
-                prices.add(String.valueOf(drinkSmallPrice.get(i)));
+                prices.add(String.valueOf(pizzaSmallPrice.get(i)));
                 PizzaCustomizationList();
             } else {
                 System.out.println("Please enter a valid input.");
@@ -588,7 +588,7 @@ public class Main {
     private static void PizzaSecondChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
-            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i));
+            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + pizzaSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
             System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select small\n");
 
@@ -609,10 +609,10 @@ public class Main {
                 PizzaCustomizationList2();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
-                total += drinkSmallPrice.get(i);
+                total += pizzaSmallPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size3);
-                prices.add(String.valueOf(drinkSmallPrice.get(i)));
+                prices.add(String.valueOf(pizzaSmallPrice.get(i)));
                 PizzaCustomizationList2();
             } else {
                 System.out.println("Please enter a valid input.");
@@ -813,7 +813,7 @@ public class Main {
     private static void PizzaThirdChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
-            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i));
+            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + pizzaSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
             System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select small\n");
 
@@ -834,10 +834,10 @@ public class Main {
                 PizzaCustomizationList4();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
-                total += drinkSmallPrice.get(i);
+                total += pizzaSmallPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size3);
-                prices.add(String.valueOf(drinkSmallPrice.get(i)));
+                prices.add(String.valueOf(pizzaSmallPrice.get(i)));
                 PizzaCustomizationList4();
             } else {
                 System.out.println("Please enter a valid input.");
