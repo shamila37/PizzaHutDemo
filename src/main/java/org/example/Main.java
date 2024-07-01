@@ -27,10 +27,16 @@ public class Main {
     static ArrayList<String> PizzaItems = new ArrayList<String>();
     static ArrayList<String> pizzaName = new ArrayList<String>();
     static ArrayList<Double> pizzaPrice = new ArrayList<Double>();
-    static ArrayList<Double> pizzaLargePrices = new ArrayList<Double>();
-    static ArrayList<Double> pizzaMediumPrices = new ArrayList<Double>();
-    static ArrayList<Double> pizzaSmallPrices = new ArrayList<Double>();
-    static ArrayList<String> descriptions = new ArrayList<String>();
+    static ArrayList<String> pizzaLargeName = new ArrayList<String>();
+    static ArrayList<String> pizzaLargeCode = new ArrayList<String>();
+    static ArrayList<Double> pizzaLargePrice = new ArrayList<Double>();
+    static ArrayList<String> pizzaMediumName = new ArrayList<String>();
+    static ArrayList<String> pizzaMediumCode = new ArrayList<String>();
+    static ArrayList<Double> pizzaMediumPrice = new ArrayList<Double>();
+    static ArrayList<String> pizzaSmallName = new ArrayList<String>();
+    static ArrayList<String> pizzaSmallCode = new ArrayList<String>();
+    static ArrayList<Double> pizzaSmallPrice = new ArrayList<Double>();
+    static ArrayList<String> pizzaDescriptions = new ArrayList<String>();
     static ArrayList<String> pizzaAddonsName1 = new ArrayList<String>();
     static ArrayList<String> pizzaAddonsName2 = new ArrayList<String>();
     static ArrayList<String> pizzaAddonsName3 = new ArrayList<String>();
@@ -70,7 +76,7 @@ public class Main {
         JSONParser parser = new JSONParser();
 
         try {
-            Object obj = parser.parse(new FileReader("menuList.json"));
+            Object obj = parser.parse(new FileReader("pizzaMenuList.json"));
             JSONObject pizzaItems = (JSONObject) obj;
             JSONArray pizzaItemsDetails = (JSONArray) pizzaItems.get("pizzaItems");
 
@@ -78,15 +84,28 @@ public class Main {
                 JSONObject pizza = (JSONObject) pizzaItemsDetails.get(i);
 
                 PizzaItems.add((String) pizza.get("name"));
-                pizzaLargePrices.add((double) pizza.get("largePrice"));
-                pizzaMediumPrices.add((double) pizza.get("mediumPrice"));
-                pizzaSmallPrices.add((double) pizza.get("smallPrice"));
-                descriptions.add((String) pizza.get("description"));
+
+                JSONObject large = (JSONObject) pizza.get("large");
+                pizzaLargeName.add((String) large.get("name"));
+                pizzaLargeCode.add((String) large.get("code"));
+                pizzaLargePrice.add((double) large.get("price"));
+
+                JSONObject medium = (JSONObject) pizza.get("medium");
+                pizzaMediumName.add((String) medium.get("name"));
+                pizzaMediumCode.add((String) medium.get("code"));
+                pizzaMediumPrice.add((double) medium.get("price"));
+
+                JSONObject small = (JSONObject) pizza.get("small");
+                pizzaSmallName.add((String) small.get("name"));
+                pizzaSmallCode.add((String) small.get("code"));
+                pizzaSmallPrice.add((double) small.get("price"));
+
+                pizzaDescriptions.add((String) pizza.get("description"));
             }
 
-            Object obj1 = parser.parse(new FileReader("addons.json"));
+            Object obj1 = parser.parse(new FileReader("pizzaAddons.json"));
             JSONObject addonsItems = (JSONObject) obj1;
-            JSONArray addonsItemsDetails = (JSONArray) addonsItems.get("addons");
+            JSONArray addonsItemsDetails = (JSONArray) addonsItems.get("pizzaAddons");
 
             for (int i = 0; i < addonsItemsDetails.size(); i++) {
                 JSONObject addons = (JSONObject) addonsItemsDetails.get(i);
@@ -179,7 +198,7 @@ public class Main {
 
     private static void PizzasItems() {
         for (int i = 0; i < PizzaItems.size(); i++) {
-            System.out.println("#" + (i+1) + " " + PizzaItems.get(i) + " - L " + pizzaLargePrices.get(i) + " " + currencyCode + " | M " + pizzaMediumPrices.get(i) + " " + currencyCode + " | S " + pizzaSmallPrices.get(i) + " " + currencyCode);
+            System.out.println("#" + (i+1) + " " + PizzaItems.get(i) + " - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i) + " " + currencyCode);
         }
     }
 
@@ -231,11 +250,11 @@ public class Main {
 
     private static void PizzaAddItem(int i) {
         System.out.println("\nName : " + PizzaItems.get(i));
-        System.out.println("Description : " + descriptions.get(i));
+        System.out.println("Description : " + pizzaDescriptions.get(i));
         System.out.println("Available Sizes : Large | Medium | Small");
-        System.out.println("Large Price : " + pizzaLargePrices.get(i) + " " + currencyCode);
-        System.out.println("Medium Price : " + pizzaMediumPrices.get(i) + " " + currencyCode);
-        System.out.println("Small Price : " + pizzaSmallPrices.get(i) + " " + currencyCode);
+        System.out.println("Large Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
+        System.out.println("Medium Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
+        System.out.println("Small Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -332,31 +351,31 @@ public class Main {
     private static void PizzaFirstChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
-            System.out.println("Available options - L " + pizzaLargePrices.get(i) + " " + currencyCode + " | M " + pizzaMediumPrices.get(i) + " " + currencyCode + " | S " + pizzaSmallPrices.get(i));
+            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
             System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select small\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
                 itemCount += 1;
-                total += pizzaLargePrices.get(i);
+                total += pizzaLargePrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size1);
-                prices.add(String.valueOf(pizzaLargePrices.get(i)));
+                prices.add(String.valueOf(pizzaLargePrice.get(i)));
                 PizzaCustomizationList();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
-                total += pizzaMediumPrices.get(i);
+                total += pizzaMediumPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size2);
-                prices.add(String.valueOf(pizzaMediumPrices.get(i)));
+                prices.add(String.valueOf(pizzaMediumPrice.get(i)));
                 PizzaCustomizationList();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
-                total += pizzaSmallPrices.get(i);
+                total += drinkSmallPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size3);
-                prices.add(String.valueOf(pizzaSmallPrices.get(i)));
+                prices.add(String.valueOf(drinkSmallPrice.get(i)));
                 PizzaCustomizationList();
             } else {
                 System.out.println("Please enter a valid input.");
@@ -569,31 +588,31 @@ public class Main {
     private static void PizzaSecondChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
-            System.out.println("Available options - L " + pizzaLargePrices.get(i) + " " + currencyCode + " | M " + pizzaMediumPrices.get(i) + " " + currencyCode + " | S " + pizzaSmallPrices.get(i));
+            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
             System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select small\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
                 itemCount += 1;
-                total += pizzaLargePrices.get(i);
+                total += pizzaLargePrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size1);
-                prices.add(String.valueOf(pizzaLargePrices.get(i)));
+                prices.add(String.valueOf(pizzaLargePrice.get(i)));
                 PizzaCustomizationList2();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
-                total += pizzaMediumPrices.get(i);
+                total += pizzaMediumPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size2);
-                prices.add(String.valueOf(pizzaMediumPrices.get(i)));
+                prices.add(String.valueOf(pizzaMediumPrice.get(i)));
                 PizzaCustomizationList2();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
-                total += pizzaSmallPrices.get(i);
+                total += drinkSmallPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size3);
-                prices.add(String.valueOf(pizzaSmallPrices.get(i)));
+                prices.add(String.valueOf(drinkSmallPrice.get(i)));
                 PizzaCustomizationList2();
             } else {
                 System.out.println("Please enter a valid input.");
@@ -794,31 +813,31 @@ public class Main {
     private static void PizzaThirdChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
-            System.out.println("Available options - L " + pizzaLargePrices.get(i) + " " + currencyCode + " | M " + pizzaMediumPrices.get(i) + " " + currencyCode + " | S " + pizzaSmallPrices.get(i));
+            System.out.println("Available options - L " + pizzaLargePrice.get(i) + " " + currencyCode + " | M " + pizzaMediumPrice.get(i) + " " + currencyCode + " | S " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
             System.out.println("Press [L] to select Large\nPress [M] to select Medium\nPress [S] to select small\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
                 itemCount += 1;
-                total += pizzaLargePrices.get(i);
+                total += pizzaLargePrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size1);
-                prices.add(String.valueOf(pizzaLargePrices.get(i)));
+                prices.add(String.valueOf(pizzaLargePrice.get(i)));
                 PizzaCustomizationList4();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
-                total += pizzaMediumPrices.get(i);
+                total += pizzaMediumPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size2);
-                prices.add(String.valueOf(pizzaMediumPrices.get(i)));
+                prices.add(String.valueOf(pizzaMediumPrice.get(i)));
                 PizzaCustomizationList4();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
-                total += pizzaSmallPrices.get(i);
+                total += drinkSmallPrice.get(i);
                 itemsName.add(PizzaItems.get(i));
                 itemsSizes.add(size3);
-                prices.add(String.valueOf(pizzaSmallPrices.get(i)));
+                prices.add(String.valueOf(drinkSmallPrice.get(i)));
                 PizzaCustomizationList4();
             } else {
                 System.out.println("Please enter a valid input.");
