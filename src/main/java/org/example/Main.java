@@ -22,6 +22,7 @@ public class Main {
     static ArrayList<String> itemChooseOrder = new ArrayList<>();
     static String[] itemTypes = {" Cake ", " Hot Beverages ", " Pizza ", " Soft Drinks "};
 
+    //    -------------   Required for pizza code   -------------
     static double pizzaAddonsTotal1, pizzaAddonsTotal2, pizzaAddonsTotal3;
     static String PizzaAddon1, PizzaAddon2, PizzaAddon3;
     static ArrayList<String> PizzaItems = new ArrayList<>();
@@ -44,6 +45,7 @@ public class Main {
     static ArrayList<String> pizzaAddonsPrice2 = new ArrayList<>();
     static ArrayList<String> pizzaAddonsPrice3 = new ArrayList<>();
 
+    //    -------------   Required for drink code   -------------
     static double drinkAddonsTotal1, drinkAddonsTotal2, drinkAddonsTotal3;
     static String DrinkAddon1, DrinkAddon2, DrinkAddon3;
     static ArrayList<String> DrinkItems = new ArrayList<>();
@@ -66,6 +68,7 @@ public class Main {
     static ArrayList<String> drinkAddonsPrice2 = new ArrayList<>();
     static ArrayList<String> drinkAddonsPrice3 = new ArrayList<>();
 
+    //    -------------   Required for beverage code   -------------
     static double beverageAddonsTotal1, beverageAddonsTotal2, beverageAddonsTotal3;
     static String BeverageAddon1, BeverageAddon2, BeverageAddon3;
     static ArrayList<String> BeverageItems = new ArrayList<>();
@@ -88,7 +91,7 @@ public class Main {
     static ArrayList<String> beverageAddonsPrice2 = new ArrayList<>();
     static ArrayList<String> beverageAddonsPrice3 = new ArrayList<>();
 
-
+    //    -------------   Required for cake code   -------------
     static double cakeAddonsTotal1, cakeAddonsTotal2, cakeAddonsTotal3;
     static String CakeAddon1, CakeAddon2, CakeAddon3;
     static ArrayList<String> CakeItems = new ArrayList<>();
@@ -117,7 +120,7 @@ public class Main {
         JSONParser parser = new JSONParser();
 
         try {
-//
+//            -------------   Read data from Pizza json file   -------------
             Object obj = parser.parse(new FileReader("pizzaMenuList.json"));
             JSONObject pizzaItems = (JSONObject) obj;
             JSONArray pizzaItemsDetails = (JSONArray) pizzaItems.get("pizzaItems");
@@ -162,13 +165,13 @@ public class Main {
 
                 pizzaDescriptions.add((String) pizza.get("description"));
             }
-
+//            -------------   Read data from Pizza Addon json file   -------------
             Object obj1 = parser.parse(new FileReader("pizzaAddons.json"));
-            JSONObject addonsItems = (JSONObject) obj1;
-            JSONArray addonsItemsDetails = (JSONArray) addonsItems.get("pizzaAddons");
+            JSONObject pizzaAddonsItems = (JSONObject) obj1;
+            JSONArray pizzaAddonsItemsDetails = (JSONArray) pizzaAddonsItems.get("pizzaAddons");
 
-            for (int i = 0; i < addonsItemsDetails.size(); i++) {
-                JSONObject pizzaAddons = (JSONObject) addonsItemsDetails.get(i);
+            for (int i = 0; i < pizzaAddonsItemsDetails.size(); i++) {
+                JSONObject pizzaAddons = (JSONObject) pizzaAddonsItemsDetails.get(i);
 
                 if (pizzaAddons == null){
                     pizzaName.add("");
@@ -178,7 +181,7 @@ public class Main {
                     pizzaPrice.add((double) pizzaAddons.get("price"));
                 }
             }
-//
+//            -------------   Read data from Drinks json file   -------------
             Object obj2 = parser.parse(new FileReader("softDrinksMenuList.json"));
             JSONObject drinkItems = (JSONObject) obj2;
             JSONArray drinkItemsDetails = (JSONArray) drinkItems.get("softDrinksItems");
@@ -223,7 +226,7 @@ public class Main {
 
                 drinkDescriptions.add((String) drinks.get("description"));
             }
-
+//            -------------   Read data from Drinks Addon json file   -------------
             Object obj3 = parser.parse(new FileReader("softDrinksAddons.json"));
             JSONObject drinkAddonsItems = (JSONObject) obj3;
             JSONArray drinkAddonsItemsDetails = (JSONArray) drinkAddonsItems.get("softDrinksAddons");
@@ -239,7 +242,7 @@ public class Main {
                     drinkPrice.add((double) drinkAddons.get("price"));
                 }
             }
-//
+//            -------------   Read data from Beverage json file   -------------
             Object obj4 = parser.parse(new FileReader("hotBeveragesMenuList.json"));
             JSONObject beverageItems = (JSONObject) obj4;
             JSONArray beverageItemsDetails = (JSONArray) beverageItems.get("hotBeveragesItems");
@@ -284,7 +287,7 @@ public class Main {
 
                 beverageDescriptions.add((String) beverages.get("description"));
             }
-
+//            -------------   Read data from Beverage Addon json file   -------------
             Object obj5 = parser.parse(new FileReader("hotBeveragesAddons.json"));
             JSONObject beverageAddonsItems = (JSONObject) obj5;
             JSONArray beverageAddonsItemsDetails = (JSONArray) beverageAddonsItems.get("hotBeveragesAddons");
@@ -300,7 +303,7 @@ public class Main {
                     beveragePrice.add((double) beverageAddons.get("price"));
                 }
             }
-//
+//            -------------   Read data from Cake json file   -------------
             Object obj6 = parser.parse(new FileReader("cakeMenuList.json"));
             JSONObject cakeItems = (JSONObject) obj6;
             JSONArray cakeItemsDetails = (JSONArray) cakeItems.get("cakeItems");
@@ -345,7 +348,7 @@ public class Main {
 
                 cakeDescriptions.add((String) cakes.get("description"));
             }
-
+//            -------------   Read data from Cake Addon json file   -------------
             Object obj7 = parser.parse(new FileReader("cakeAddons.json"));
             JSONObject cakeAddonsItems = (JSONObject) obj7;
             JSONArray cakeAddonsItemsDetails = (JSONArray) cakeAddonsItems.get("cakeAddons");
@@ -2024,6 +2027,7 @@ public class Main {
             System.out.println("[ " + itemChooseOrder.get(i) + " ]");
             System.out.println("#" + (i+1) + " " + itemsName.get(i));
             System.out.println("          - " + itemsSizes.get(i) + " Size - " + prices.get(i) + " " + currencyCode);
+//            -------------   PizzaAddon start   -------------
             if (PizzaAddon1 == "one" & i == 0){
                 System.out.println("    Addons");
                 for (int j = 0; j < pizzaAddonsName1.size(); j++) {
@@ -2039,6 +2043,8 @@ public class Main {
                 for (int j = 0; j < pizzaAddonsName3.size(); j++) {
                     System.out.println("          - " + pizzaAddonsName3.get(j) + " - " + pizzaAddonsPrice3.get(j) + " " + currencyCode);
                 }
+//            -------------   PizzaAddon end   -------------
+//            -------------   DrinkAddon start   -------------
             } else if (DrinkAddon1 == "one" & i == 0){
                 System.out.println("    Addons");
                 for (int j = 0; j < drinkAddonsName1.size(); j++) {
@@ -2054,6 +2060,8 @@ public class Main {
                 for (int j = 0; j < drinkAddonsName3.size(); j++) {
                     System.out.println("          - " + drinkAddonsName3.get(j) + " - " + drinkAddonsPrice3.get(j) + " " + currencyCode);
                 }
+//            -------------   DrinkAddon end   -------------
+//            -------------   BeverageAddon start   -------------
             } else if (BeverageAddon1 == "one" & i == 0){
                 System.out.println("    Addons");
                 for (int j = 0; j < beverageAddonsName1.size(); j++) {
@@ -2069,6 +2077,8 @@ public class Main {
                 for (int j = 0; j < beverageAddonsName3.size(); j++) {
                     System.out.println("          - " + beverageAddonsName3.get(j) + " - " + beverageAddonsPrice3.get(j) + " " + currencyCode);
                 }
+//            -------------   BeverageAddon end   -------------
+//            -------------   CakeAddon start   -------------
             } else if (CakeAddon1 == "one" & i == 0){
                 System.out.println("    Addons");
                 for (int j = 0; j < cakeAddonsName1.size(); j++) {
@@ -2085,6 +2095,7 @@ public class Main {
                     System.out.println("          - " + cakeAddonsName3.get(j) + " - " + cakeAddonsPrice3.get(j) + " " + currencyCode);
                 }
             }
+//            -------------   CakeAddon end   -------------
         }
         System.out.println("\n        Total : " + ( total + pizzaAddonsTotal1 + pizzaAddonsTotal2 + pizzaAddonsTotal3 +
                                                             drinkAddonsTotal1 + drinkAddonsTotal2 + drinkAddonsTotal3 +
