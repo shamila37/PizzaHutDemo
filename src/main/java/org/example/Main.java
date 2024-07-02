@@ -614,18 +614,27 @@ public class Main {
         System.out.println("\nName : " + PizzaItems.get(i));
         System.out.println("Description : " + pizzaDescriptions.get(i));
 
-        if (pizzaLargeCode.get(i) == ""){
+        if (pizzaLargeCode.get(i) == "" & pizzaMediumCode.get(i) != "" & pizzaSmallCode.get(i) != ""){
             System.out.println("Available Sizes : " + pizzaMediumName.get(i) + " | " + pizzaSmallName.get(i));
             System.out.println(pizzaMediumName.get(i) + " Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
             System.out.println(pizzaSmallName.get(i) + " Price : " + pizzaSmallPrice.get(i) + " " + currencyCode);
-        } else if (pizzaMediumCode.get(i) == "") {
+        } else if (pizzaLargeCode.get(i) != "" & pizzaMediumCode.get(i) == "" & pizzaSmallCode.get(i) != "") {
             System.out.println("Available Sizes : " + pizzaLargeName.get(i) + " | " + pizzaSmallName.get(i));
             System.out.println(pizzaLargeName.get(i) + " Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
             System.out.println(pizzaSmallName.get(i) + " Price : " + pizzaSmallPrice.get(i) + " " + currencyCode);
-        } else if (pizzaSmallCode.get(i) == "") {
+        } else if (pizzaLargeCode.get(i) != "" & pizzaMediumCode.get(i) != "" & pizzaSmallCode.get(i) == "") {
             System.out.println("Available Sizes : " + pizzaLargeName.get(i) + " | " + pizzaMediumName.get(i));
             System.out.println(pizzaLargeName.get(i) + " Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
             System.out.println(pizzaMediumName.get(i) + " Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
+        } else if (pizzaLargeCode.get(i) == "" & pizzaMediumCode.get(i) == "" & pizzaSmallCode.get(i) != "") {
+            System.out.println("Available Sizes : " + pizzaSmallName.get(i));
+            System.out.println(pizzaSmallName.get(i) + " Price : " + pizzaSmallPrice.get(i) + " " + currencyCode);
+        } else if (pizzaLargeCode.get(i) == "" & pizzaMediumCode.get(i) != "" & pizzaSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + pizzaMediumName.get(i));
+            System.out.println(pizzaMediumName.get(i) + " Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
+        } else if (pizzaLargeCode.get(i) != "" & pizzaMediumCode.get(i) == "" & pizzaSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + pizzaLargeName.get(i));
+            System.out.println(pizzaLargeName.get(i) + " Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
         } else {
             System.out.println("Available Sizes : " + pizzaLargeName.get(i) + " | " + pizzaMediumName.get(i) + " | " + pizzaSmallName.get(i));
             System.out.println(pizzaLargeName.get(i) + " Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
@@ -646,18 +655,27 @@ public class Main {
         System.out.println("\nName : " + DrinkItems.get(i));
         System.out.println("Description : " + drinkDescriptions.get(i));
 
-        if (drinkLargeCode.get(i) == ""){
+        if (drinkLargeCode.get(i) == "" & drinkRegularCode.get(i) != "" & drinkSmallCode.get(i) != ""){
             System.out.println("Available Sizes : " + drinkRegularName.get(i) + " | " + drinkSmallName.get(i));
             System.out.println(drinkRegularName.get(i) + " Price : " + drinkRegularPrice.get(i) + " " + currencyCode);
             System.out.println(drinkSmallName.get(i) + " Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
-        } else if (drinkRegularCode.get(i) == "") {
+        } else if (drinkLargeCode.get(i) != "" & drinkRegularCode.get(i) == "" & drinkSmallCode.get(i) != "") {
             System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkSmallName.get(i));
             System.out.println(drinkLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
             System.out.println(drinkSmallName.get(i) + " Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
-        } else if (drinkSmallCode.get(i) == "") {
+        } else if (drinkLargeCode.get(i) != "" & drinkRegularCode.get(i) != "" & drinkSmallCode.get(i) == "") {
             System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkRegularName.get(i));
             System.out.println(drinkLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
             System.out.println(drinkRegularName.get(i) + " Price : " + drinkRegularPrice.get(i) + " " + currencyCode);
+        } else if (drinkLargeCode.get(i) == "" & drinkRegularCode.get(i) == "" & drinkSmallCode.get(i) != "") {
+            System.out.println("Available Sizes : " + drinkSmallName.get(i));
+            System.out.println(drinkSmallName.get(i) + " Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
+        } else if (drinkLargeCode.get(i) == "" & drinkRegularCode.get(i) != "" & drinkSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + drinkRegularName.get(i));
+            System.out.println(drinkRegularName.get(i) + " Price : " + drinkRegularPrice.get(i) + " " + currencyCode);
+        } else if (drinkLargeCode.get(i) != "" & drinkRegularCode.get(i) == "" & drinkSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + drinkLargeName.get(i));
+            System.out.println(drinkLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
         } else {
             System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkRegularName.get(i) + " | " + drinkSmallName.get(i));
             System.out.println(drinkLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
@@ -677,18 +695,27 @@ public class Main {
     private static void BeveragesAddItem(int i) {
         System.out.println("\nName : " + BeverageItems.get(i));
         System.out.println("Description : " + beverageDescriptions.get(i));
-        if (beverageLargeCode.get(i) == ""){
+        if (beverageLargeCode.get(i) == "" & beverageRegularCode.get(i) != "" & beverageSmallCode.get(i) != ""){
             System.out.println("Available Sizes : " + beverageRegularName.get(i) + " | " + beverageSmallName.get(i));
             System.out.println(beverageRegularName.get(i) + " Price : " + beverageRegularPrice.get(i) + " " + currencyCode);
             System.out.println(beverageSmallName.get(i) + " Price : " + beverageSmallPrice.get(i) + " " + currencyCode);
-        } else if (beverageRegularCode.get(i) == "") {
+        } else if (beverageLargeCode.get(i) != "" & beverageRegularCode.get(i) == "" & beverageSmallCode.get(i) != "") {
             System.out.println("Available Sizes : " + beverageLargeName.get(i) + " | " + beverageSmallName.get(i));
             System.out.println(beverageLargeName.get(i) + " Price : " + beverageLargePrice.get(i) + " " + currencyCode);
             System.out.println(beverageSmallName.get(i) + " Price : " + beverageSmallPrice.get(i) + " " + currencyCode);
-        } else if (beverageSmallCode.get(i) == "") {
+        } else if (beverageLargeCode.get(i) != "" & beverageRegularCode.get(i) != "" & beverageSmallCode.get(i) == "") {
             System.out.println("Available Sizes : " + beverageLargeName.get(i) + " | " + beverageRegularName.get(i));
             System.out.println(beverageLargeName.get(i) + " Price : " + beverageLargePrice.get(i) + " " + currencyCode);
             System.out.println(beverageRegularName.get(i) + " Price : " + beverageRegularPrice.get(i) + " " + currencyCode);
+        } else if (beverageLargeCode.get(i) == "" & beverageRegularCode.get(i) == "" & beverageSmallCode.get(i) != "") {
+            System.out.println("Available Sizes : " + beverageSmallName.get(i));
+            System.out.println(beverageSmallName.get(i) + " Price : " + beverageSmallPrice.get(i) + " " + currencyCode);
+        } else if (beverageLargeCode.get(i) == "" & beverageRegularCode.get(i) != "" & beverageSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + beverageRegularName.get(i));
+            System.out.println(beverageRegularName.get(i) + " Price : " + beverageRegularPrice.get(i) + " " + currencyCode);
+        } else if (beverageLargeCode.get(i) != "" & beverageRegularCode.get(i) == "" & beverageSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + beverageLargeName.get(i));
+            System.out.println(beverageLargeName.get(i) + " Price : " + beverageLargePrice.get(i) + " " + currencyCode);
         } else {
             System.out.println("Available Sizes : " + beverageLargeName.get(i) + " | " + beverageRegularName.get(i) + " | " + beverageSmallName.get(i));
             System.out.println(beverageLargeName.get(i) + " Price : " + beverageLargePrice.get(i) + " " + currencyCode);
@@ -708,18 +735,27 @@ public class Main {
     private static void CakeAddItem(int i) {
         System.out.println("\nName : " + CakeItems.get(i));
         System.out.println("Description : " + cakeDescriptions.get(i));
-        if (cakeFullCode.get(i) == ""){
+        if (cakeFullCode.get(i) == "" & cakeHalfCode.get(i) != "" & cakeSliceCode.get(i) != ""){
             System.out.println("Available Sizes : " + cakeHalfName.get(i) + " | " + cakeSliceName.get(i));
             System.out.println(cakeHalfName.get(i) + " Price : " + cakeHalfPrice.get(i) + " " + currencyCode);
             System.out.println(cakeSliceName.get(i) + " Price : " + cakeSlicePrice.get(i) + " " + currencyCode);
-        } else if (cakeHalfCode.get(i) == "") {
+        } else if (cakeFullCode.get(i) != "" & cakeHalfCode.get(i) == "" & cakeSliceCode.get(i) != "") {
             System.out.println("Available Sizes : " + cakeFullName.get(i) + " | " + cakeSliceName.get(i));
             System.out.println(cakeFullName.get(i) + " Price : " + cakeFullPrice.get(i) + " " + currencyCode);
             System.out.println(cakeSliceName.get(i) + " Price : " + cakeSlicePrice.get(i) + " " + currencyCode);
-        } else if (cakeSliceCode.get(i) == "") {
+        } else if (cakeFullCode.get(i) != "" & cakeHalfCode.get(i) != "" & cakeSliceCode.get(i) == "") {
             System.out.println("Available Sizes : " + cakeFullName.get(i) + " | " + cakeHalfName.get(i));
             System.out.println(cakeFullName.get(i) + " Price : " + cakeFullPrice.get(i) + " " + currencyCode);
             System.out.println(cakeHalfName.get(i) + " Price : " + cakeHalfPrice.get(i) + " " + currencyCode);
+        } else if (cakeFullCode.get(i) == "" & cakeHalfCode.get(i) == "" & cakeSliceCode.get(i) != "") {
+            System.out.println("Available Sizes : " + cakeSliceName.get(i));
+            System.out.println(cakeSliceName.get(i) + " Price : " + cakeSlicePrice.get(i) + " " + currencyCode);
+        } else if (cakeFullCode.get(i) == "" & cakeHalfCode.get(i) != "" & cakeSliceCode.get(i) == "") {
+            System.out.println("Available Sizes : " + cakeHalfName.get(i));
+            System.out.println(cakeHalfName.get(i) + " Price : " + cakeHalfPrice.get(i) + " " + currencyCode);
+        }  else if (cakeFullCode.get(i) != "" & cakeHalfCode.get(i) == "" & cakeSliceCode.get(i) == "") {
+            System.out.println("Available Sizes : " + cakeFullName.get(i));
+            System.out.println(cakeFullName.get(i) + " Price : " + cakeFullPrice.get(i) + " " + currencyCode);
         } else {
             System.out.println("Available Sizes : " + cakeFullName.get(i) + " | " + cakeHalfName.get(i) + " | " + cakeSliceName.get(i));
             System.out.println(cakeFullName.get(i) + " Price : " + cakeFullPrice.get(i) + " " + currencyCode);
@@ -849,7 +885,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
             System.out.println("Available options - " + pizzaLargeCode.get(i) + " " + pizzaLargePrice.get(i) + " " + currencyCode + " | " + pizzaMediumCode.get(i) + " " + pizzaMediumPrice.get(i) + " " + currencyCode + " | " + pizzaSmallCode.get(i) + " " + pizzaSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + pizzaLargeCode.get(i) + "] to select Large\nPress [" + pizzaMediumCode.get(i) + "] to select Medium\nPress [" + pizzaSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + pizzaLargeCode.get(i) + "] to select " + pizzaLargeName.get(i) + "\nPress [" + pizzaMediumCode.get(i) + "] to select " + pizzaMediumName.get(i) + "\nPress [" + pizzaSmallCode.get(i) + "] to select " + pizzaSmallName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -884,7 +920,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + DrinkItems.get(i));
             System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkRegularCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select " + drinkLargeName.get(i) + "\nPress [" + drinkRegularCode.get(i) + "] to select " + drinkRegularName.get(i) + "\nPress [" + drinkSmallCode.get(i) + "] to select " + drinkSmallName + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -894,7 +930,7 @@ public class Main {
                 itemsSizes.add(drinkLargeName.get(i));
                 prices.add(String.valueOf(drinkLargePrice.get(i)));
                 DrinkCustomizationList();
-            } else if (customerOption4.equals("M")) {
+            } else if (customerOption4.equals("R")) {
                 itemCount += 1;
                 total += drinkRegularPrice.get(i);
                 itemsName.add(DrinkItems.get(i));
@@ -919,7 +955,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + BeverageItems.get(i));
             System.out.println("Available options - " + beverageLargeCode.get(i) + " " + beverageLargePrice.get(i) + " " + currencyCode + " | " + beverageRegularCode.get(i) + " " + beverageRegularPrice.get(i) + " " + currencyCode + " | " + beverageSmallCode.get(i) + " " + beverageSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + beverageLargeCode.get(i) + "] to select Large\nPress [" + beverageRegularCode.get(i) + "] to select Regular\nPress [" + beverageSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + beverageLargeCode.get(i) + "] to select " + beverageLargeName.get(i) + "\nPress [" + beverageRegularCode.get(i) + "] to select " + beverageRegularName.get(i) + "\nPress [" + beverageSmallCode.get(i) + "] to select " + beverageSmallName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -954,7 +990,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + CakeItems.get(i));
             System.out.println("Available options - " + cakeFullCode.get(i) + " " + cakeFullPrice.get(i) + " " + currencyCode + " | " + cakeHalfCode.get(i) + " " + cakeHalfPrice.get(i) + " " + currencyCode + " | " + cakeSliceCode.get(i) + " " + cakeSlicePrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + cakeFullCode.get(i) + "] to select Full\nPress [" + cakeHalfCode.get(i) + "] to select Half\nPress [" + cakeSliceCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + cakeFullCode.get(i) + "] to select " + cakeFullName.get(i) + "\nPress [" + cakeHalfCode.get(i) + "] to select " + cakeHalfName.get(i) + "\nPress [" + cakeSliceCode.get(i) + "] to select " + cakeSliceName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("F")) {
@@ -1292,7 +1328,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
             System.out.println("Available options - " + pizzaLargeCode.get(i) + " " + pizzaLargePrice.get(i) + " " + currencyCode + " | " + pizzaMediumCode.get(i) + " " + pizzaMediumPrice.get(i) + " " + currencyCode + " | " + pizzaSmallCode.get(i) + " " + pizzaSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + pizzaLargeCode.get(i) + "] to select Large\nPress [" + pizzaMediumCode.get(i) + "] to select Medium\nPress [" + pizzaSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + pizzaLargeCode.get(i) + "] to select " + pizzaLargeName.get(i) + "\nPress [" + pizzaMediumCode.get(i) + "] to select " + pizzaMediumName.get(i) + "\nPress [" + pizzaSmallCode.get(i) + "] to select " + pizzaSmallName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -1327,7 +1363,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + DrinkItems.get(i));
             System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkRegularCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select " + drinkLargeName.get(i) + "\nPress [" + drinkRegularCode.get(i) + "] to select " + drinkRegularName.get(i) + "\nPress [" + drinkSmallCode.get(i) + "] to select " + drinkSmallName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -1337,7 +1373,7 @@ public class Main {
                 itemsSizes.add(drinkLargeName.get(i));
                 prices.add(String.valueOf(drinkLargePrice.get(i)));
                 DrinkCustomizationList2();
-            } else if (customerOption4.equals("M")) {
+            } else if (customerOption4.equals("R")) {
                 itemCount += 1;
                 total += drinkRegularPrice.get(i);
                 itemsName.add(DrinkItems.get(i));
@@ -1362,7 +1398,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + BeverageItems.get(i));
             System.out.println("Available options - " + beverageLargeCode.get(i) + " " + beverageLargePrice.get(i) + " " + currencyCode + " | " + beverageRegularCode.get(i) + " " + beverageRegularPrice.get(i) + " " + currencyCode + " | " + beverageSmallCode.get(i) + " " + beverageSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + beverageLargeCode.get(i) + "] to select Large\nPress [" + beverageRegularCode.get(i) + "] to select Regular\nPress [" + beverageSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + beverageLargeCode.get(i) + "] to select " + beverageLargeName.get(i) + "\nPress [" + beverageRegularCode.get(i) + "] to select " + beverageRegularName.get(i) + "\nPress [" + beverageSmallCode.get(i) + "] to select " + beverageSmallName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -1397,7 +1433,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + CakeItems.get(i));
             System.out.println("Available options - " + cakeFullCode.get(i) + " " + cakeFullPrice.get(i) + " " + currencyCode + " | " + cakeHalfCode.get(i) + " " + cakeHalfPrice.get(i) + " " + currencyCode + " | " + cakeSliceCode.get(i) + " " + cakeSlicePrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + cakeFullCode.get(i) + "] to select Full\nPress [" + cakeHalfCode.get(i) + "] to select Half\nPress [" + cakeSliceCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + cakeFullCode.get(i) + "] to select " + cakeFullName.get(i) + "\nPress [" + cakeHalfCode.get(i) + "] to select " + cakeHalfName.get(i) + "\nPress [" + cakeSliceCode.get(i) + "] to select " + cakeSliceName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("F")) {
@@ -1711,7 +1747,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + PizzaItems.get(i));
             System.out.println("Available options - " + pizzaLargeCode.get(i) + " " + pizzaLargePrice.get(i) + " " + currencyCode + " | " + pizzaMediumCode.get(i) + " " + pizzaMediumPrice.get(i) + " " + currencyCode + " | " + pizzaSmallCode.get(i) + " " + pizzaSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + pizzaLargeCode.get(i) + "] to select Large\nPress [" + pizzaMediumCode.get(i) + "] to select Medium\nPress [" + pizzaSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + pizzaLargeCode.get(i) + "] to select " + pizzaLargeName.get(i) + "\nPress [" + pizzaMediumCode.get(i) + "] to select " + pizzaMediumName.get(i) + "\nPress [" + pizzaSmallCode.get(i) + "] to select " + pizzaSmallName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -1746,7 +1782,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + DrinkItems.get(i));
             System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkRegularCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select " + drinkLargeName.get(i) + "\nPress [" + drinkRegularCode.get(i) + "] to select " + drinkRegularName.get(i) + "\nPress [" + drinkSmallCode.get(i) + "] to select " + drinkSmallName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -1756,7 +1792,7 @@ public class Main {
                 itemsSizes.add(pizzaLargeName.get(i));
                 prices.add(String.valueOf(drinkLargePrice.get(i)));
                 DrinkCustomizationList4();
-            } else if (customerOption4.equals("M")) {
+            } else if (customerOption4.equals("R")) {
                 itemCount += 1;
                 total += drinkRegularPrice.get(i);
                 itemsName.add(DrinkItems.get(i));
@@ -1781,7 +1817,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + BeverageItems.get(i));
             System.out.println("Available options - " + beverageLargeCode.get(i) + " " + beverageLargePrice.get(i) + " " + currencyCode + " | " + beverageRegularCode.get(i) + " " + beverageRegularPrice.get(i) + " " + currencyCode + " | " + beverageSmallCode.get(i) + " " + beverageSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + beverageLargeCode.get(i) + "] to select Large\nPress [" + beverageRegularCode.get(i) + "] to select Regular\nPress [" + beverageSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + beverageLargeCode.get(i) + "] to select " + beverageLargeName.get(i) + "\nPress [" + beverageRegularCode.get(i) + "] to select " + beverageLargeName.get(i) + "\nPress [" + beverageSmallCode.get(i) + "] to select " + beverageSmallName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -1816,7 +1852,7 @@ public class Main {
             System.out.println("\nYou have selected #" + (i + 1) + " " + CakeItems.get(i));
             System.out.println("Available options - " + cakeFullCode.get(i) + " " + cakeFullPrice.get(i) + " " + currencyCode + " | " + cakeHalfCode.get(i) + " " + cakeHalfPrice.get(i) + " " + currencyCode + " | " + cakeSliceCode.get(i) + " " + cakeSlicePrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + cakeFullCode.get(i) + "] to select Full\nPress [" + cakeHalfCode.get(i) + "] to select Half\nPress [" + cakeSliceCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + cakeFullCode.get(i) + "] to select " + cakeFullName.get(i) + "\nPress [" + cakeHalfCode.get(i) + "] to select " + cakeHalfName.get(i) + "\nPress [" + cakeSliceCode.get(i) + "] to select " + cakeSliceName.get(i) + "\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("F")) {
