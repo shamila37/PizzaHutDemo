@@ -523,6 +523,8 @@ public class Main {
         String customerOption2 = input.nextLine();
         if (customerOption2.equalsIgnoreCase("")) {
             PizzaMenuView();
+        } else {
+            PizzaMenuView();
         }
     }
 
@@ -537,6 +539,8 @@ public class Main {
 
         String customerOption2 = input.nextLine();
         if (customerOption2.equalsIgnoreCase("")) {
+            DrinkMenuView();
+        } else {
             DrinkMenuView();
         }
     }
@@ -553,6 +557,8 @@ public class Main {
         String customerOption2 = input.nextLine();
         if (customerOption2.equalsIgnoreCase("")) {
             HotBeveragesMenuView();
+        } else {
+            HotBeveragesMenuView();
         }
     }
 
@@ -567,6 +573,8 @@ public class Main {
 
         String customerOption2 = input.nextLine();
         if (customerOption2.equalsIgnoreCase("")) {
+            CakesMenuView();
+        } else {
             CakesMenuView();
         }
     }
