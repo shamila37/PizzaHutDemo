@@ -36,7 +36,11 @@
     },
     {
       "name": "Nescafe",
-      "large":null,
+      "large":{
+        "name" : "Large",
+        "code" : "L",
+        "price" : 200.0
+      },
       "regular": null,
       "small": null,
       "description": "Nescafé is a brand with instant coffee made by the Vevey-based company Nestlé."
