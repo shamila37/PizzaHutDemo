@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class Main {
 
     static Scanner input = new Scanner(System.in);
+
     static int itemCount = 0;
     static double total;
-
     static String currencyCode = "LKR";
     static String[] orderStep = {"first", "second", "third"};
     static ArrayList<String> itemsName = new ArrayList<String>();
@@ -52,9 +52,9 @@ public class Main {
     static ArrayList<String> drinkLargeName = new ArrayList<String>();
     static ArrayList<String> drinkLargeCode = new ArrayList<String>();
     static ArrayList<Double> drinkLargePrice = new ArrayList<Double>();
-    static ArrayList<String> drinkMediumName = new ArrayList<String>();
-    static ArrayList<String> drinkMediumCode = new ArrayList<String>();
-    static ArrayList<Double> drinkMediumPrice = new ArrayList<Double>();
+    static ArrayList<String> drinkRegularName = new ArrayList<String>();
+    static ArrayList<String> drinkRegularCode = new ArrayList<String>();
+    static ArrayList<Double> drinkRegularPrice = new ArrayList<Double>();
     static ArrayList<String> drinkSmallName = new ArrayList<String>();
     static ArrayList<String> drinkSmallCode = new ArrayList<String>();
     static ArrayList<Double> drinkSmallPrice = new ArrayList<Double>();
@@ -111,20 +111,13 @@ public class Main {
     static ArrayList<String> cakeAddonsPrice2 = new ArrayList<String>();
     static ArrayList<String> cakeAddonsPrice3 = new ArrayList<String>();
 
-    static String size1 = "Large";
-    static String size2 = "Medium";
-    static String size3 = "Small";
-    static String size4 = "Regular";
-    static String size5 = "Full";
-    static String size6 = "Half";
-    static String size7 = "Slice";
-
     //    -------------   Main method start   -------------
     public static void main(String[] args) {
 
         JSONParser parser = new JSONParser();
 
         try {
+//
             Object obj = parser.parse(new FileReader("pizzaMenuList.json"));
             JSONObject pizzaItems = (JSONObject) obj;
             JSONArray pizzaItemsDetails = (JSONArray) pizzaItems.get("pizzaItems");
@@ -135,19 +128,37 @@ public class Main {
                 PizzaItems.add((String) pizza.get("name"));
 
                 JSONObject large = (JSONObject) pizza.get("large");
-                pizzaLargeName.add((String) large.get("name"));
-                pizzaLargeCode.add((String) large.get("code"));
-                pizzaLargePrice.add((double) large.get("price"));
+                if (large == null) {
+                    pizzaLargeName.add("");
+                    pizzaLargeCode.add("");
+                    pizzaLargePrice.add(0.0);
+                } else {
+                    pizzaLargeName.add((String) large.get("name"));
+                    pizzaLargeCode.add((String) large.get("code"));
+                    pizzaLargePrice.add((double) large.get("price"));
+                }
 
                 JSONObject medium = (JSONObject) pizza.get("medium");
-                pizzaMediumName.add((String) medium.get("name"));
-                pizzaMediumCode.add((String) medium.get("code"));
-                pizzaMediumPrice.add((double) medium.get("price"));
+                if (medium == null) {
+                    pizzaMediumName.add("");
+                    pizzaMediumCode.add("");
+                    pizzaMediumPrice.add(0.0);
+                } else {
+                    pizzaMediumName.add((String) medium.get("name"));
+                    pizzaMediumCode.add((String) medium.get("code"));
+                    pizzaMediumPrice.add((double) medium.get("price"));
+                }
 
                 JSONObject small = (JSONObject) pizza.get("small");
-                pizzaSmallName.add((String) small.get("name"));
-                pizzaSmallCode.add((String) small.get("code"));
-                pizzaSmallPrice.add((double) small.get("price"));
+                if (small == null) {
+                    pizzaSmallName.add("");
+                    pizzaSmallCode.add("");
+                    pizzaSmallPrice.add(0.0);
+                } else {
+                    pizzaSmallName.add((String) small.get("name"));
+                    pizzaSmallCode.add((String) small.get("code"));
+                    pizzaSmallPrice.add((double) small.get("price"));
+                }
 
                 pizzaDescriptions.add((String) pizza.get("description"));
             }
@@ -157,12 +168,17 @@ public class Main {
             JSONArray addonsItemsDetails = (JSONArray) addonsItems.get("pizzaAddons");
 
             for (int i = 0; i < addonsItemsDetails.size(); i++) {
-                JSONObject addons = (JSONObject) addonsItemsDetails.get(i);
+                JSONObject pizzaAddons = (JSONObject) addonsItemsDetails.get(i);
 
-                pizzaName.add((String) addons.get("name"));
-                pizzaPrice.add((double) addons.get("price"));
+                if (pizzaAddons == null){
+                    pizzaName.add("");
+                    pizzaPrice.add(0.0);
+                } else {
+                    pizzaName.add((String) pizzaAddons.get("name"));
+                    pizzaPrice.add((double) pizzaAddons.get("price"));
+                }
             }
-
+//
             Object obj2 = parser.parse(new FileReader("softDrinksMenuList.json"));
             JSONObject drinkItems = (JSONObject) obj2;
             JSONArray drinkItemsDetails = (JSONArray) drinkItems.get("softDrinksItems");
@@ -173,19 +189,37 @@ public class Main {
                 DrinkItems.add((String) drinks.get("name"));
 
                 JSONObject large = (JSONObject) drinks.get("large");
-                drinkLargeName.add((String) large.get("name"));
-                drinkLargeCode.add((String) large.get("code"));
-                drinkLargePrice.add((double) large.get("price"));
+                if (large == null) {
+                    drinkLargeName.add("");
+                    drinkLargeCode.add("");
+                    drinkLargePrice.add(0.0);
+                } else {
+                    drinkLargeName.add((String) large.get("name"));
+                    drinkLargeCode.add((String) large.get("code"));
+                    drinkLargePrice.add((double) large.get("price"));
+                }
 
-                JSONObject medium = (JSONObject) drinks.get("medium");
-                drinkMediumName.add((String) medium.get("name"));
-                drinkMediumCode.add((String) medium.get("code"));
-                drinkMediumPrice.add((double) medium.get("price"));
+                JSONObject regular = (JSONObject) drinks.get("regular");
+                if (regular == null) {
+                    drinkRegularName.add("");
+                    drinkRegularCode.add("");
+                    drinkRegularPrice.add(0.0);
+                } else {
+                    drinkRegularName.add((String) regular.get("name"));
+                    drinkRegularCode.add((String) regular.get("code"));
+                    drinkRegularPrice.add((double) regular.get("price"));
+                }
 
                 JSONObject small = (JSONObject) drinks.get("small");
-                drinkSmallName.add((String) small.get("name"));
-                drinkSmallCode.add((String) small.get("code"));
-                drinkSmallPrice.add((double) small.get("price"));
+                if (small == null) {
+                    drinkSmallName.add("");
+                    drinkSmallCode.add("");
+                    drinkSmallPrice.add(0.0);
+                } else {
+                    drinkSmallName.add((String) small.get("name"));
+                    drinkSmallCode.add((String) small.get("code"));
+                    drinkSmallPrice.add((double) small.get("price"));
+                }
 
                 drinkDescriptions.add((String) drinks.get("description"));
             }
@@ -197,10 +231,15 @@ public class Main {
             for (int i = 0; i < drinkAddonsItemsDetails.size(); i++) {
                 JSONObject drinkAddons = (JSONObject) drinkAddonsItemsDetails.get(i);
 
-                drinkName.add((String) drinkAddons.get("name"));
-                drinkPrice.add((double) drinkAddons.get("price"));
+                if (drinkAddons == null){
+                    drinkName.add("");
+                    drinkPrice.add(0.0);
+                } else {
+                    drinkName.add((String) drinkAddons.get("name"));
+                    drinkPrice.add((double) drinkAddons.get("price"));
+                }
             }
-
+//
             Object obj4 = parser.parse(new FileReader("hotBeveragesMenuList.json"));
             JSONObject beverageItems = (JSONObject) obj4;
             JSONArray beverageItemsDetails = (JSONArray) beverageItems.get("hotBeveragesItems");
@@ -253,10 +292,15 @@ public class Main {
             for (int i = 0; i < beverageAddonsItemsDetails.size(); i++) {
                 JSONObject beverageAddons = (JSONObject) beverageAddonsItemsDetails.get(i);
 
-                beverageName.add((String) beverageAddons.get("name"));
-                beveragePrice.add((double) beverageAddons.get("price"));
+                if (beverageAddons == null){
+                    beverageName.add("");
+                    beveragePrice.add(0.0);
+                } else {
+                    beverageName.add((String) beverageAddons.get("name"));
+                    beveragePrice.add((double) beverageAddons.get("price"));
+                }
             }
-
+//
             Object obj6 = parser.parse(new FileReader("cakeMenuList.json"));
             JSONObject cakeItems = (JSONObject) obj6;
             JSONArray cakeItemsDetails = (JSONArray) cakeItems.get("cakeItems");
@@ -309,10 +353,15 @@ public class Main {
             for (int i = 0; i < cakeAddonsItemsDetails.size(); i++) {
                 JSONObject cakeAddons = (JSONObject) cakeAddonsItemsDetails.get(i);
 
-                cakeName.add((String) cakeAddons.get("name"));
-                cakePrice.add((double) cakeAddons.get("price"));
+                if (cakeAddons == null){
+                    cakeName.add("");
+                    cakePrice.add(0.0);
+                } else {
+                    cakeName.add((String) cakeAddons.get("name"));
+                    cakePrice.add((double) cakeAddons.get("price"));
+                }
             }
-
+//
         } catch (IOException e) {
             e.printStackTrace();
         } catch (org.json.simple.parser.ParseException e) {
@@ -386,7 +435,7 @@ public class Main {
 
     private static void DrinkItems() {
         for (int i = 0; i < DrinkItems.size(); i++) {
-            System.out.println("#" + (i+1) + " " + DrinkItems.get(i) + " - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkMediumCode.get(i) + " " + drinkMediumPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i) + " " + currencyCode);
+            System.out.println("#" + (i+1) + " " + DrinkItems.get(i) + " - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i) + " " + currencyCode);
         }
     }
 
@@ -480,9 +529,9 @@ public class Main {
     private static void DrinksAddItem(int i) {
         System.out.println("\nName : " + DrinkItems.get(i));
         System.out.println("Description : " + drinkDescriptions.get(i));
-        System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkMediumName.get(i) + " | " + drinkSmallName.get(i) + "");
+        System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkRegularName.get(i) + " | " + drinkSmallName.get(i) + "");
         System.out.println("" + pizzaLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
-        System.out.println("" + pizzaMediumName.get(i) + " Price : " + drinkMediumPrice.get(i) + " " + currencyCode);
+        System.out.println("" + pizzaMediumName.get(i) + " Price : " + drinkRegularPrice.get(i) + " " + currencyCode);
         System.out.println("" + pizzaSmallName.get(i) + " Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
         System.out.println("\nPress any to go back\n");
 
@@ -668,9 +717,9 @@ public class Main {
     private static void DrinkFirstChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + DrinkItems.get(i));
-            System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkMediumCode.get(i) + " " + drinkMediumPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
+            System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkMediumCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkRegularCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -682,10 +731,10 @@ public class Main {
                 DrinkCustomizationList();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
-                total += drinkMediumPrice.get(i);
+                total += drinkRegularPrice.get(i);
                 itemsName.add(DrinkItems.get(i));
-                itemsSizes.add(drinkMediumName.get(i));
-                prices.add(String.valueOf(drinkMediumPrice.get(i)));
+                itemsSizes.add(drinkRegularName.get(i));
+                prices.add(String.valueOf(drinkRegularPrice.get(i)));
                 DrinkCustomizationList();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
@@ -1111,9 +1160,9 @@ public class Main {
     private static void DrinkSecondChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + DrinkItems.get(i));
-            System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkMediumCode.get(i) + " " + drinkMediumPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
+            System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkMediumCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkRegularCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -1125,10 +1174,10 @@ public class Main {
                 DrinkCustomizationList2();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
-                total += drinkMediumPrice.get(i);
+                total += drinkRegularPrice.get(i);
                 itemsName.add(DrinkItems.get(i));
-                itemsSizes.add(drinkMediumName.get(i));
-                prices.add(String.valueOf(drinkMediumPrice.get(i)));
+                itemsSizes.add(drinkRegularName.get(i));
+                prices.add(String.valueOf(drinkRegularPrice.get(i)));
                 DrinkCustomizationList2();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
@@ -1530,9 +1579,9 @@ public class Main {
     private static void DrinkThirdChoice(int i) {
         while (true) {
             System.out.println("\nYou have selected #" + (i + 1) + " " + DrinkItems.get(i));
-            System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkMediumCode.get(i) + " " + drinkMediumPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
+            System.out.println("Available options - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i));
             System.out.println("\nPlease select a size you wish to buy.\n");
-            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkMediumCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
+            System.out.println("Press [" + drinkLargeCode.get(i) + "] to select Large\nPress [" + drinkRegularCode.get(i) + "] to select Medium\nPress [" + drinkSmallCode.get(i) + "] to select Small\n");
 
             String customerOption4 = input.nextLine();
             if (customerOption4.equals("L")) {
@@ -1544,10 +1593,10 @@ public class Main {
                 DrinkCustomizationList4();
             } else if (customerOption4.equals("M")) {
                 itemCount += 1;
-                total += drinkMediumPrice.get(i);
+                total += drinkRegularPrice.get(i);
                 itemsName.add(DrinkItems.get(i));
                 itemsSizes.add(pizzaMediumName.get(i));
-                prices.add(String.valueOf(drinkMediumPrice.get(i)));
+                prices.add(String.valueOf(drinkRegularPrice.get(i)));
                 DrinkCustomizationList4();
             } else if (customerOption4.equals("S")) {
                 itemCount += 1;
@@ -1812,7 +1861,7 @@ public class Main {
         for (int i = 0; i < itemsName.size(); i++) {
             System.out.println("[ " + itemChooseOrder.get(i) + " ]");
             System.out.println("#" + (i+1) + " " + itemsName.get(i));
-            System.out.println("          - " + itemsSizes.get(i) + " - " + prices.get(i) + " " + currencyCode);
+            System.out.println("          - " + itemsSizes.get(i) + " Size - " + prices.get(i) + " " + currencyCode);
             if (PizzaAddon1 == "one" & i == 0){
                 System.out.println("    Addons");
                 for (int j = 0; j < pizzaAddonsName1.size(); j++) {
