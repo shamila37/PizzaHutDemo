@@ -409,7 +409,31 @@ public class Main {
 
     private static void PizzasItems() {
         for (int i = 0; i < PizzaItems.size(); i++) {
-            System.out.println("#" + (i+1) + " " + PizzaItems.get(i) + " - " + pizzaLargeCode.get(i) + " " + pizzaLargePrice.get(i) + " " + currencyCode + " | " + pizzaMediumCode.get(i) + " " + pizzaMediumPrice.get(i) + " " + currencyCode + " | " + pizzaSmallCode.get(i) + " " + pizzaSmallPrice.get(i) + " " + currencyCode);
+            System.out.println("#" + (i+1) + " " + PizzaItems.get(i) + " - " + pizzaLargeItem(i) + pizzaMediumItem(i) + pizzaSmallItem(i));
+        }
+    }
+
+    private static String pizzaLargeItem(int i) {
+        if (pizzaLargeCode.get(i) == ""){
+            return "";
+        } else {
+            return pizzaLargeCode.get(i) + " " + pizzaLargePrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    private static String pizzaMediumItem(int i) {
+        if (pizzaMediumCode.get(i) == ""){
+            return "";
+        } else {
+            return " | " + pizzaMediumCode.get(i) + " " + pizzaMediumPrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    private static String pizzaSmallItem(int i) {
+        if (pizzaSmallCode.get(i) == ""){
+            return "";
+        } else {
+            return " | " + pizzaSmallCode.get(i) + " " + pizzaSmallPrice.get(i) + " " + currencyCode;
         }
     }
 
@@ -435,7 +459,31 @@ public class Main {
 
     private static void DrinkItems() {
         for (int i = 0; i < DrinkItems.size(); i++) {
-            System.out.println("#" + (i+1) + " " + DrinkItems.get(i) + " - " + drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode + " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode + " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i) + " " + currencyCode);
+            System.out.println("#" + (i+1) + " " + DrinkItems.get(i) + " - " + drinkLargeItem(i) + drinkRegularItem(i) + drinkSmallItem(i));
+        }
+    }
+
+    private static String drinkLargeItem(int i) {
+        if (drinkLargeCode.get(i) == ""){
+            return "";
+        } else {
+            return drinkLargeCode.get(i) + " " + drinkLargePrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    private static String drinkRegularItem(int i) {
+        if (drinkRegularCode.get(i) == ""){
+            return "";
+        } else {
+            return " | " + drinkRegularCode.get(i) + " " + drinkRegularPrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    private static String drinkSmallItem(int i) {
+        if (drinkSmallCode.get(i) == ""){
+            return "";
+        } else {
+            return " | " + drinkSmallCode.get(i) + " " + drinkSmallPrice.get(i) + " " + currencyCode;
         }
     }
 
@@ -461,7 +509,31 @@ public class Main {
 
     private static void BeverageItems() {
         for (int i = 0; i < BeverageItems.size(); i++) {
-            System.out.println("#" + (i+1) + " " + BeverageItems.get(i) + " - " + beverageLargeCode.get(i) + " " + beverageLargePrice.get(i) + " " + currencyCode + " | " + beverageRegularCode.get(i) + " " + beverageRegularPrice.get(i) + " " + currencyCode + " | " + beverageSmallCode.get(i) + " " + beverageSmallPrice.get(i) + " " + currencyCode);
+            System.out.println("#" + (i+1) + " " + BeverageItems.get(i) + " - " + beverageLargeItem(i) + beverageRegularItem(i) + beverageSmallItem(i));
+        }
+    }
+
+    private static String beverageLargeItem(int i) {
+        if (beverageLargeCode.get(i) == ""){
+            return "";
+        } else {
+            return beverageLargeCode.get(i) + " " + beverageLargePrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    private static String beverageRegularItem(int i) {
+        if (beverageRegularCode.get(i) == ""){
+            return "";
+        } else {
+            return " | " + beverageRegularCode.get(i) + " " + beverageRegularPrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    private static String beverageSmallItem(int i) {
+        if (beverageSmallCode.get(i) == ""){
+            return "";
+        } else {
+            return " | " + beverageSmallCode.get(i) + " " + beverageSmallPrice.get(i) + " " + currencyCode;
         }
     }
 
@@ -487,11 +559,35 @@ public class Main {
 
     private static void CakeItems() {
         for (int i = 0; i < CakeItems.size(); i++) {
-            System.out.println("#" + (i+1) + " " + CakeItems.get(i) + " - " + cakeFullCode.get(i) + " " + cakeFullPrice.get(i) + " " + currencyCode + " | " + cakeHalfCode.get(i) + " " + cakeHalfPrice.get(i) + " " + currencyCode + " | " + cakeSliceCode.get(i) + " " + cakeSlicePrice.get(i) + " " + currencyCode);
+            System.out.println("#" + (i+1) + " " + CakeItems.get(i) + " - " + cakeFullItem(i) + cakeHalfItem(i) + cakeSliceItem(i));
         }
     }
 
-    //    -------------   BeveragesMenu method start   -------------
+    private static String cakeFullItem(int i) {
+        if (cakeFullCode.get(i) == ""){
+            return "";
+        } else {
+            return cakeFullCode.get(i) + " " + cakeFullPrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    private static String cakeHalfItem(int i) {
+        if (cakeHalfCode.get(i) == ""){
+            return "";
+        } else {
+            return " | " + cakeHalfCode.get(i) + " " + cakeHalfPrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    private static String cakeSliceItem(int i) {
+        if (cakeSliceCode.get(i) == ""){
+            return "";
+        } else {
+            return " | " + cakeSliceCode.get(i) + " " + cakeSlicePrice.get(i) + " " + currencyCode;
+        }
+    }
+
+    //    -------------   CakeMenu method start   -------------
     private static void CakesMenuView() {
         while (true) {
             System.out.println("\nCake Menu\n");
@@ -509,15 +605,30 @@ public class Main {
             System.out.print("\nPlease enter a valid input");
         }
     }
-    //    -------------   BeveragesMenu method end   -------------
+    //    -------------   CakeMenu method end   -------------
 
     private static void PizzaAddItem(int i) {
         System.out.println("\nName : " + PizzaItems.get(i));
         System.out.println("Description : " + pizzaDescriptions.get(i));
-        System.out.println("Available Sizes : " + pizzaLargeName.get(i) + " | " + pizzaMediumName.get(i) + " | " + pizzaSmallName.get(i));
-        System.out.println(pizzaLargeName.get(i) + " Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
-        System.out.println(pizzaMediumName.get(i) + " Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
-        System.out.println(pizzaSmallName.get(i) + " Price : " + pizzaSmallPrice.get(i) + " " + currencyCode);
+
+        if (pizzaLargeCode.get(i) == ""){
+            System.out.println("Available Sizes : " + pizzaMediumName.get(i) + " | " + pizzaSmallName.get(i));
+            System.out.println(pizzaMediumName.get(i) + " Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
+            System.out.println(pizzaSmallName.get(i) + " Price : " + pizzaSmallPrice.get(i) + " " + currencyCode);
+        } else if (pizzaMediumCode.get(i) == "") {
+            System.out.println("Available Sizes : " + pizzaLargeName.get(i) + " | " + pizzaSmallName.get(i));
+            System.out.println(pizzaLargeName.get(i) + " Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
+            System.out.println(pizzaSmallName.get(i) + " Price : " + pizzaSmallPrice.get(i) + " " + currencyCode);
+        } else if (pizzaSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + pizzaLargeName.get(i) + " | " + pizzaMediumName.get(i));
+            System.out.println(pizzaLargeName.get(i) + " Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
+            System.out.println(pizzaMediumName.get(i) + " Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
+        } else {
+            System.out.println("Available Sizes : " + pizzaLargeName.get(i) + " | " + pizzaMediumName.get(i) + " | " + pizzaSmallName.get(i));
+            System.out.println(pizzaLargeName.get(i) + " Price : " + pizzaLargePrice.get(i) + " " + currencyCode);
+            System.out.println(pizzaMediumName.get(i) + " Price : " + pizzaMediumPrice.get(i) + " " + currencyCode);
+            System.out.println(pizzaSmallName.get(i) + " Price : " + pizzaSmallPrice.get(i) + " " + currencyCode);
+        }
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -531,10 +642,25 @@ public class Main {
     private static void DrinksAddItem(int i) {
         System.out.println("\nName : " + DrinkItems.get(i));
         System.out.println("Description : " + drinkDescriptions.get(i));
-        System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkRegularName.get(i) + " | " + drinkSmallName.get(i));
-        System.out.println(pizzaLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
-        System.out.println(pizzaMediumName.get(i) + " Price : " + drinkRegularPrice.get(i) + " " + currencyCode);
-        System.out.println(pizzaSmallName.get(i) + " Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
+
+        if (drinkLargeCode.get(i) == ""){
+            System.out.println("Available Sizes : " + drinkRegularName.get(i) + " | " + drinkSmallName.get(i));
+            System.out.println(drinkRegularName.get(i) + " Price : " + drinkRegularPrice.get(i) + " " + currencyCode);
+            System.out.println(drinkSmallName.get(i) + " Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
+        } else if (drinkRegularCode.get(i) == "") {
+            System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkSmallName.get(i));
+            System.out.println(drinkLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
+            System.out.println(drinkSmallName.get(i) + " Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
+        } else if (drinkSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkRegularName.get(i));
+            System.out.println(drinkLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
+            System.out.println(drinkRegularName.get(i) + " Price : " + drinkRegularPrice.get(i) + " " + currencyCode);
+        } else {
+            System.out.println("Available Sizes : " + drinkLargeName.get(i) + " | " + drinkRegularName.get(i) + " | " + drinkSmallName.get(i));
+            System.out.println(drinkLargeName.get(i) + " Price : " + drinkLargePrice.get(i) + " " + currencyCode);
+            System.out.println(drinkRegularName.get(i) + " Price : " + drinkRegularPrice.get(i) + " " + currencyCode);
+            System.out.println(drinkSmallName.get(i) + " Price : " + drinkSmallPrice.get(i) + " " + currencyCode);
+        }
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -548,10 +674,24 @@ public class Main {
     private static void BeveragesAddItem(int i) {
         System.out.println("\nName : " + BeverageItems.get(i));
         System.out.println("Description : " + beverageDescriptions.get(i));
-        System.out.println("Available Sizes : " + beverageLargeName.get(i) + " | " + beverageRegularName.get(i) + " | " + beverageSmallName.get(i));
-        System.out.println(beverageLargeName.get(i) + " Price : " + beverageLargePrice.get(i) + " " + currencyCode);
-        System.out.println(beverageRegularName.get(i) + " Price : " + beverageRegularPrice.get(i) + " " + currencyCode);
-        System.out.println(beverageSmallName.get(i) + " Price : " + beverageSmallPrice.get(i) + " " + currencyCode);
+        if (beverageLargeCode.get(i) == ""){
+            System.out.println("Available Sizes : " + beverageRegularName.get(i) + " | " + beverageSmallName.get(i));
+            System.out.println(beverageRegularName.get(i) + " Price : " + beverageRegularPrice.get(i) + " " + currencyCode);
+            System.out.println(beverageSmallName.get(i) + " Price : " + beverageSmallPrice.get(i) + " " + currencyCode);
+        } else if (beverageRegularCode.get(i) == "") {
+            System.out.println("Available Sizes : " + beverageLargeName.get(i) + " | " + beverageSmallName.get(i));
+            System.out.println(beverageLargeName.get(i) + " Price : " + beverageLargePrice.get(i) + " " + currencyCode);
+            System.out.println(beverageSmallName.get(i) + " Price : " + beverageSmallPrice.get(i) + " " + currencyCode);
+        } else if (beverageSmallCode.get(i) == "") {
+            System.out.println("Available Sizes : " + beverageLargeName.get(i) + " | " + beverageRegularName.get(i));
+            System.out.println(beverageLargeName.get(i) + " Price : " + beverageLargePrice.get(i) + " " + currencyCode);
+            System.out.println(beverageRegularName.get(i) + " Price : " + beverageRegularPrice.get(i) + " " + currencyCode);
+        } else {
+            System.out.println("Available Sizes : " + beverageLargeName.get(i) + " | " + beverageRegularName.get(i) + " | " + beverageSmallName.get(i));
+            System.out.println(beverageLargeName.get(i) + " Price : " + beverageLargePrice.get(i) + " " + currencyCode);
+            System.out.println(beverageRegularName.get(i) + " Price : " + beverageRegularPrice.get(i) + " " + currencyCode);
+            System.out.println(beverageSmallName.get(i) + " Price : " + beverageSmallPrice.get(i) + " " + currencyCode);
+        }
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
@@ -565,10 +705,24 @@ public class Main {
     private static void CakeAddItem(int i) {
         System.out.println("\nName : " + CakeItems.get(i));
         System.out.println("Description : " + cakeDescriptions.get(i));
-        System.out.println("Available Sizes : " + cakeFullName.get(i) + " | " + cakeHalfName.get(i) + " | " + cakeSliceName.get(i));
-        System.out.println(cakeFullName.get(i) + " Price : " + cakeFullPrice.get(i) + " " + currencyCode);
-        System.out.println(cakeHalfName.get(i) + " Price : " + cakeHalfPrice.get(i) + " " + currencyCode);
-        System.out.println(cakeSliceName.get(i) + " Price : " + cakeSlicePrice.get(i) + " " + currencyCode);
+        if (cakeFullCode.get(i) == ""){
+            System.out.println("Available Sizes : " + cakeHalfName.get(i) + " | " + cakeSliceName.get(i));
+            System.out.println(cakeHalfName.get(i) + " Price : " + cakeHalfPrice.get(i) + " " + currencyCode);
+            System.out.println(cakeSliceName.get(i) + " Price : " + cakeSlicePrice.get(i) + " " + currencyCode);
+        } else if (cakeHalfCode.get(i) == "") {
+            System.out.println("Available Sizes : " + cakeFullName.get(i) + " | " + cakeSliceName.get(i));
+            System.out.println(cakeFullName.get(i) + " Price : " + cakeFullPrice.get(i) + " " + currencyCode);
+            System.out.println(cakeSliceName.get(i) + " Price : " + cakeSlicePrice.get(i) + " " + currencyCode);
+        } else if (cakeSliceCode.get(i) == "") {
+            System.out.println("Available Sizes : " + cakeFullName.get(i) + " | " + cakeHalfName.get(i));
+            System.out.println(cakeFullName.get(i) + " Price : " + cakeFullPrice.get(i) + " " + currencyCode);
+            System.out.println(cakeHalfName.get(i) + " Price : " + cakeHalfPrice.get(i) + " " + currencyCode);
+        } else {
+            System.out.println("Available Sizes : " + cakeFullName.get(i) + " | " + cakeHalfName.get(i) + " | " + cakeSliceName.get(i));
+            System.out.println(cakeFullName.get(i) + " Price : " + cakeFullPrice.get(i) + " " + currencyCode);
+            System.out.println(cakeHalfName.get(i) + " Price : " + cakeHalfPrice.get(i) + " " + currencyCode);
+            System.out.println(cakeSliceName.get(i) + " Price : " + cakeSlicePrice.get(i) + " " + currencyCode);
+        }
         System.out.println("\nPress any to go back\n");
 
         String customerOption2 = input.nextLine();
